@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Collectable.h"
+#include "Components/BoxComponent.h"
 #include "BasePlayer.generated.h"
 
 UCLASS()
@@ -16,6 +18,16 @@ class AOI_PROJECT_API ABasePlayer : public ACharacter
 	class USpringArmComponent* SpringArm;
 	UPROPERTY(VisibleAnywhere, Category = "Camera")
 	class UCameraComponent* Camera;
+
+	UPROPERTY()
+	UBoxComponent* BoxCollision;
+
+	UPROPERTY()
+	ACollectable* CurrentSelectableInstrument;
+	UPROPERTY()
+	ACollectable* CurrentUsableInstrument;
+
+	void UseOrSetInstrument();
 
 
 public:
@@ -37,6 +49,11 @@ protected:
 	void MoveRight(float InputValue);
 	void CameraLookUp(float InputValue);
 	void CameraLookRight(float InputValue);
+
+	UFUNCTION()
+	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	UFUNCTION()
+	void OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
 public:	
 	// Called every frame
