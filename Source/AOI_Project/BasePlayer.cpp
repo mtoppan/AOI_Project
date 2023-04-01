@@ -4,6 +4,7 @@
 #include "BasePlayer.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
+#include "GameFramework/Controller.h"
 
 // Sets default values
 ABasePlayer::ABasePlayer()
@@ -14,7 +15,7 @@ ABasePlayer::ABasePlayer()
 	// Create spring arm
 	SpringArm = CreateDefaultSubobject<USpringArmComponent>(TEXT("Spring Arm"));
 	SpringArm->SetupAttachment(RootComponent);
-	SpringArm->TargetArmLength = 350.0f;
+	SpringArm->TargetArmLength = 450.0f;
 	SpringArm->bUsePawnControlRotation = true;
 
 	// Create camera
@@ -44,25 +45,50 @@ void ABasePlayer::MoveForward(float InputValue)
 		const FRotator YawRotation(0, Rotation.Yaw, 0);
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 
+		// Add movement input
+		AddMovementInput(Direction, InputValue);
+
 	}
 }
 
 void ABasePlayer::MoveRight(float InputValue)
 {
+	if (Controller != NULL && InputValue != 0)
+	{
+		const FRotator Rotation = Controller->GetControlRotation();
+		const FRotator YawRotation(0, Rotation.Yaw, 0);
+		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+
+		// Add movement input
+		AddMovementInput(Direction, InputValue);
+
+	}
 }
 
 void ABasePlayer::CameraLookUp(float InputValue)
 {
+	AddControllerPitchInput(InputValue * CameraLookUpRate);
 }
 
 void ABasePlayer::CameraLookRight(float InputValue)
 {
-}
+	AddControllerYawInput(InputValue * CameraTurnRate);
+}   
 
 // Called to bind functionality to input
 void ABasePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+
+	// bind to action mappings
+	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
+	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+
+	// bind axis mappings
+	PlayerInputComponent->BindAxis("MoveForward", this, &ABasePlayer::MoveForward);
+	PlayerInputComponent->BindAxis("MoveRight", this, &ABasePlayer::MoveRight);
+	PlayerInputComponent->BindAxis("CameraLookUp", this, &ABasePlayer::CameraLookUp);
+	PlayerInputComponent->BindAxis("CameraLookRight", this, &ABasePlayer::CameraLookRight);
 
 }
 

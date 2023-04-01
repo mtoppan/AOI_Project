@@ -24,9 +24,9 @@ public:
 
 	// Camera variables
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Camera")
-	float CameraTurnRate;
+	float CameraTurnRate = 0.7f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Camera")
-	float CameraLookUpRate;
+	float CameraLookUpRate = 0.7f;
 
 protected:
 	// Called when the game starts or when spawned
