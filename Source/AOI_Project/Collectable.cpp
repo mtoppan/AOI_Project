@@ -2,6 +2,9 @@
 
 
 #include "Collectable.h"
+#include "BasePlayer.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ACollectable::ACollectable()
@@ -15,7 +18,13 @@ ACollectable::ACollectable()
 void ACollectable::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	//cant do this without #include - circular dependency
+	Player = UGameplayStatics::GetActorOfClass(GetWorld(), ABasePlayer::StaticClass());
+}
+
+// create a child script where you can make this more specific, like editing player movement to add a jump
+void ACollectable::UseInstrument()
+{
 }
 
 // Called every frame
