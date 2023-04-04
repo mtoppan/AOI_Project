@@ -5,6 +5,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Controller.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 ABasePlayer::ABasePlayer()
@@ -28,6 +29,7 @@ void ABasePlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	
+	Movement = FindComponentByClass<UCharacterMovementComponent>();
 	BoxCollision = FindComponentByClass<UBoxComponent>();
 	if (BoxCollision != nullptr)
 	{
@@ -101,6 +103,11 @@ void ABasePlayer::UseOrSetInstrument()
 {
 	// if player currently has an instrument, use it
 	// access methods from CurrentUsableInstrument
+	if (CurrentUsableInstrument != nullptr)
+	{
+		//InstrumentOnBack->ToggleVisibility();
+		CurrentUsableInstrument->UseInstrument();
+	}
 
 	// if player doesn't currently have an instrument, try to pick one up
 	if (CurrentSelectableInstrument != nullptr)
@@ -108,7 +115,7 @@ void ABasePlayer::UseOrSetInstrument()
 		// may want to change this to a type later, enum?
 		CurrentUsableInstrument = CurrentSelectableInstrument;
 		CurrentUsableInstrument->FindComponentByClass<UStaticMeshComponent>()->ToggleVisibility();
-		UE_LOG(LogTemp, Warning, TEXT("Picked up instrument"));
+		//InstrumentOnBack->ToggleVisibility();
 	}
 }
 

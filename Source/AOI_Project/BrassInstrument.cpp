@@ -1,13 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "Collectable.h"
+#include "BrassInstrument.h"
 #include "BasePlayer.h"
 #include "GameFramework/CharacterMovementComponent.h"
-#include "Kismet/GameplayStatics.h"
 
 // Sets default values
-ACollectable::ACollectable()
+ABrassInstrument::ABrassInstrument()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -15,20 +14,22 @@ ACollectable::ACollectable()
 }
 
 // Called when the game starts or when spawned
-void ACollectable::BeginPlay()
+void ABrassInstrument::BeginPlay()
 {
 	Super::BeginPlay();
-	//cant do this without #include - circular dependency
-	Player = UGameplayStatics::GetActorOfClass(GetWorld(), ABasePlayer::StaticClass());
+	
 }
 
-// create a child script where you can make this more specific, like editing player movement to add a jump
-void ACollectable::UseInstrument()
+void ABrassInstrument::UseInstrument()
 {
+	ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
+	FVector CurrentVelocity = BasePlayer->Movement->Velocity;
+	FVector JumpVelocity = FVector(CurrentVelocity.X, CurrentVelocity.Y, JumpForce);
+	BasePlayer->Movement->Velocity = JumpVelocity;
 }
 
 // Called every frame
-void ACollectable::Tick(float DeltaTime)
+void ABrassInstrument::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
