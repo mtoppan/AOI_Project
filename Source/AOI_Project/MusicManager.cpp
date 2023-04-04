@@ -41,7 +41,7 @@ void AMusicManager::CountBeat()
 	BeatTimerDelegate.BindUFunction(this, FName(BeatFunctionCalls[BeatOfMeasure - 1]));
 	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
 
-	BeatOfMeasure = (BeatOfMeasure  % MeterTop) + 1;
+	BeatOfMeasure = (BeatOfMeasure  % 4) + 1;
 
 	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
 	GetWorld()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, false);

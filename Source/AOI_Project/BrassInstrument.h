@@ -4,30 +4,27 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "Collectable.generated.h"
+#include "Collectable.h"
+#include "BrassInstrument.generated.h"
 
 UCLASS()
-class AOI_PROJECT_API ACollectable : public AActor
+class AOI_PROJECT_API ABrassInstrument : public ACollectable
 {
 	GENERATED_BODY()
 
+	float JumpForce = 100;
 	
 public:	
 	// Sets default values for this actor's properties
-	ACollectable();
+	ABrassInstrument();
 
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UPROPERTY()
-	AActor* Player;
-	UPROPERTY()
-	class UCharacterMovementComponent* Movement;
-
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-	virtual void UseInstrument();
+	virtual void UseInstrument() override;
 
 };

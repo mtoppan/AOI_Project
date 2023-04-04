@@ -105,8 +105,8 @@ void ABasePlayer::UseOrSetInstrument()
 	// access methods from CurrentUsableInstrument
 	if (CurrentUsableInstrument != nullptr)
 	{
-		InstrumentOnBack->ToggleVisibility();
-		CharacterMovement->Velocity = 
+		//InstrumentOnBack->ToggleVisibility();
+		CurrentUsableInstrument->UseInstrument();
 	}
 
 	// if player doesn't currently have an instrument, try to pick one up
@@ -115,7 +115,7 @@ void ABasePlayer::UseOrSetInstrument()
 		// may want to change this to a type later, enum?
 		CurrentUsableInstrument = CurrentSelectableInstrument;
 		CurrentUsableInstrument->FindComponentByClass<UStaticMeshComponent>()->ToggleVisibility();
-		InstrumentOnBack->ToggleVisibility();
+		//InstrumentOnBack->ToggleVisibility();
 	}
 }
 
