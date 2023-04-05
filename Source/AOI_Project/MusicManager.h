@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Misc/OutputDeviceNull.h"
 #include "GameFramework/Actor.h"
 #include "MusicManager.generated.h"
 
@@ -30,6 +31,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Meter")
 	TEnumAsByte<Meters> MeterBottom;
 
+
 	UFUNCTION()
 	void DownBeatFired();
 	UFUNCTION()
@@ -40,6 +42,11 @@ public:
 	void FourthBeatFired();
 
 	float CurrentBPM;
+
+	void CallBlueprintFunction();
+	UPROPERTY(EditAnywhere, Category = "BlueprintClass")
+    AActor* blueprintActor;
+
 
 protected:
 	// Called when the game starts or when spawned

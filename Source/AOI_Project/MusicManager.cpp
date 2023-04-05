@@ -48,9 +48,18 @@ void AMusicManager::CountBeat()
 	BeatOfMeasure = (BeatOfMeasure  % 4) + 1;
 }
 
+void AMusicManager::CallBlueprintFunction() {
+	FOutputDeviceNull ar;
+	const FString command = FString::Printf(TEXT("Ball true"));
+	if (blueprintActor) {
+		blueprintActor->CallFunctionByNameWithArguments(*command, ar, NULL, true);
+	}
+}
+
 void AMusicManager::DownBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("1"));
+	CallBlueprintFunction();
 }
 
 void AMusicManager::SecondBeatFired()
