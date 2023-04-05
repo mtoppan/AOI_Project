@@ -19,7 +19,6 @@ class AOI_PROJECT_API AMusicManager : public AActor
 {
 	GENERATED_BODY()
 
-	float CurrentBPM;
 	TArray<FString> BeatFunctionCalls;
 	int BeatOfMeasure;
 	
@@ -42,9 +41,16 @@ public:
 	UFUNCTION()
 	void FourthBeatFired();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Song Stats")
+	float CurrentBPM;
+
 	void CallBlueprintFunction();
 	UPROPERTY(EditAnywhere, Category = "BlueprintClass")
-		AActor* blueprintActor;
+    AActor* blueprintActor;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnRocks();
+
 
 protected:
 	// Called when the game starts or when spawned

@@ -12,7 +12,7 @@ class AOI_PROJECT_API ABrassInstrument : public ACollectable
 {
 	GENERATED_BODY()
 
-	float JumpForce = 100;
+	float JumpForce = 10000;
 	
 public:	
 	// Sets default values for this actor's properties

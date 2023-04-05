@@ -26,6 +26,7 @@ void ABrassInstrument::UseInstrument()
 	FVector CurrentVelocity = BasePlayer->Movement->Velocity;
 	FVector JumpVelocity = FVector(CurrentVelocity.X, CurrentVelocity.Y, JumpForce);
 	BasePlayer->Movement->Velocity = JumpVelocity;
+	UE_LOG(LogTemp, Warning, TEXT("Use"));
 }
 
 // Called every frame
