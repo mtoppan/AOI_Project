@@ -20,12 +20,13 @@ void AMusicManager::BeginPlay()
 	BeatFunctionCalls.Add("ThirdBeatFired");
 	BeatFunctionCalls.Add("FourthBeatFired");
 
+	CurrentBPM = 100;
 	BeatOfMeasure = 2;
 	DownBeatFired();
 	CountBeat();
 
 	// change these per music piece, assumed base is 1/4
-	CurrentBPM = 100;
+	
 	MeterTop = Meters::Four;
 }
 
@@ -47,9 +48,18 @@ void AMusicManager::CountBeat()
 	GetWorld()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, false);
 }
 
+void AMusicManager::CallBlueprintFunction() {
+	FOutputDeviceNull ar;
+	const FString command = FString::Printf(TEXT("Ball true"));
+	if (blueprintActor) {
+		blueprintActor->CallFunctionByNameWithArguments(*command, ar, NULL, true);
+	}
+}
+
 void AMusicManager::DownBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("1"));
+	CallBlueprintFunction();
 }
 
 void AMusicManager::SecondBeatFired()
