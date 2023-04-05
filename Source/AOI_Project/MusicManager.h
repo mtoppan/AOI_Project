@@ -18,7 +18,6 @@ class AOI_PROJECT_API AMusicManager : public AActor
 {
 	GENERATED_BODY()
 
-	float CurrentBPM;
 	TArray<FString> BeatFunctionCalls;
 	int BeatOfMeasure;
 	
@@ -39,6 +38,8 @@ public:
 	void ThirdBeatFired();
 	UFUNCTION()
 	void FourthBeatFired();
+
+	float CurrentBPM;
 
 protected:
 	// Called when the game starts or when spawned

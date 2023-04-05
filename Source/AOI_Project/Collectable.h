@@ -29,5 +29,9 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	virtual void UseInstrument();
+	virtual void PickUpInstrument();
+
+	UPROPERTY(EditAnywhere, Category = "Mesh")
+	class UStaticMeshComponent* BaseMesh;
 
 };

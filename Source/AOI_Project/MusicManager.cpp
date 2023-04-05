@@ -20,31 +20,32 @@ void AMusicManager::BeginPlay()
 	BeatFunctionCalls.Add("ThirdBeatFired");
 	BeatFunctionCalls.Add("FourthBeatFired");
 
+	CurrentBPM = 100;
 	BeatOfMeasure = 2;
-	DownBeatFired();
-	CountBeat();
 
 	// change these per music piece, assumed base is 1/4
-	CurrentBPM = 100;
 	MeterTop = Meters::Four;
+
+	DownBeatFired();
+
+	FTimerDelegate CounterTimerDelegate;
+	FTimerHandle CounterTimerHandle;
+
+	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
+	GetGameInstance()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, true);
 }
 
 void AMusicManager::CountBeat()
 {
 	FTimerDelegate BeatTimerDelegate;
 	FTimerHandle BeatTimerHandle;
-	FTimerDelegate CounterTimerDelegate;
-	FTimerHandle CounterTimerHandle;
 
 	FString BeatCallToFire = BeatFunctionCalls[BeatOfMeasure - 1];
 
 	BeatTimerDelegate.BindUFunction(this, FName(BeatFunctionCalls[BeatOfMeasure - 1]));
-	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
+	GetGameInstance()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
 
 	BeatOfMeasure = (BeatOfMeasure  % 4) + 1;
-
-	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
-	GetWorld()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, false);
 }
 
 void AMusicManager::DownBeatFired()

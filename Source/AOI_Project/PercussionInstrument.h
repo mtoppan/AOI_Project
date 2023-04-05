@@ -5,18 +5,26 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Collectable.h"
-#include "BrassInstrument.generated.h"
+#include "MusicManager.h"
+#include "PercussionInstrument.generated.h"
 
 UCLASS()
-class AOI_PROJECT_API ABrassInstrument : public ACollectable
+class AOI_PROJECT_API APercussionInstrument : public ACollectable
 {
 	GENERATED_BODY()
 
-	float JumpForce = 10000;
-	
+	UPROPERTY()
+	AMusicManager* MusicManager;
+	UPROPERTY(EditAnywhere, Category = "Collision")
+	class UStaticMeshComponent* CollisionVisual;
+	UPROPERTY(EditAnywhere, Category = "Collision")
+	class USphereComponent* SphereCollision;
+
+	UFUNCTION()
+	void EndDrum();
 public:	
 	// Sets default values for this actor's properties
-	ABrassInstrument();
+	APercussionInstrument();
 
 protected:
 	// Called when the game starts or when spawned
@@ -26,5 +34,5 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	virtual void UseInstrument() override;
-
+	virtual void PickUpInstrument() override;
 };

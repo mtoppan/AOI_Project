@@ -22,6 +22,9 @@ ABasePlayer::ABasePlayer()
 	// Create camera
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
+
+	Drum = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Drum"));
+	Drum->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -36,6 +39,8 @@ void ABasePlayer::BeginPlay()
 		BoxCollision->OnComponentBeginOverlap.AddDynamic(this, & ABasePlayer::OnOverlapBegin);
 		BoxCollision->OnComponentEndOverlap.AddDynamic(this, &ABasePlayer::OnOverlapEnd);
 	}
+
+	CurrentUsableInstrument = nullptr;
 }
 
 // Called every frame
@@ -102,20 +107,18 @@ void ABasePlayer::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor*
 void ABasePlayer::UseOrSetInstrument()
 {
 	// if player currently has an instrument, use it
-	// access methods from CurrentUsableInstrument
 	if (CurrentUsableInstrument != nullptr)
 	{
-		//InstrumentOnBack->ToggleVisibility();
 		CurrentUsableInstrument->UseInstrument();
 	}
 
 	// if player doesn't currently have an instrument, try to pick one up
-	if (CurrentSelectableInstrument != nullptr)
+	if (CurrentSelectableInstrument != nullptr && CurrentUsableInstrument == nullptr)
 	{
-		// may want to change this to a type later, enum?
+		CurrentSelectableInstrument->PickUpInstrument();
 		CurrentUsableInstrument = CurrentSelectableInstrument;
-		CurrentUsableInstrument->FindComponentByClass<UStaticMeshComponent>()->ToggleVisibility();
-		//InstrumentOnBack->ToggleVisibility();
+		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
+		InstrumentOnBack->ToggleVisibility();
 	}
 }
 

@@ -27,6 +27,10 @@ void ACollectable::UseInstrument()
 {
 }
 
+void ACollectable::PickUpInstrument()
+{
+}
+
 // Called every frame
 void ACollectable::Tick(float DeltaTime)
 {
