@@ -11,14 +11,14 @@ APercussionInstrument::APercussionInstrument()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
-
+	RootComponent = Root;
+	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
 	CollisionVisual = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Sphere Mesh"));
-	CollisionVisual->SetupAttachment(RootComponent);
+	CollisionVisual->SetupAttachment(Root);
 	SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere Collider"));
-	SphereCollision->SetupAttachment(RootComponent);
+	SphereCollision->SetupAttachment(Root);
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Object Mesh"));
-	BaseMesh->SetupAttachment(RootComponent);
+	BaseMesh->SetupAttachment(Root);
 
 }
 
@@ -42,6 +42,8 @@ void APercussionInstrument::UseInstrument()
 	CollisionVisual->ToggleVisibility();
 	SphereCollision->SetGenerateOverlapEvents(true);
 
+	PlayDrumSound();
+	Playing = true;
 	FTimerDelegate TimerDelegate;
 	FTimerHandle TimerHandle;
 
@@ -62,6 +64,13 @@ void APercussionInstrument::EndDrum()
 	// turn visuals off and end collision check
 	CollisionVisual->ToggleVisibility();
 	SphereCollision->SetGenerateOverlapEvents(false);
+	Playing = false;
+	
+	if (!AddedTrack)
+	{
+		AddDrumTrack();
+		AddedTrack = true;
+	}
 }
 
 

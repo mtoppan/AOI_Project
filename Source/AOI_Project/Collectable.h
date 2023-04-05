@@ -31,6 +31,8 @@ public:
 	virtual void UseInstrument();
 	virtual void PickUpInstrument();
 
+	UPROPERTY(EditAnywhere, Category = "Root")
+	class USceneComponent* Root;
 	UPROPERTY(EditAnywhere, Category = "Mesh")
 	class UStaticMeshComponent* BaseMesh;
 

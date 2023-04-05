@@ -27,12 +27,7 @@ void AMusicManager::BeginPlay()
 	MeterTop = Meters::Four;
 
 	DownBeatFired();
-
-	FTimerDelegate CounterTimerDelegate;
-	FTimerHandle CounterTimerHandle;
-
-	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
-	GetGameInstance()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, true);
+	CountBeat();
 }
 
 void AMusicManager::CountBeat()
@@ -45,10 +40,17 @@ void AMusicManager::CountBeat()
 	BeatTimerDelegate.BindUFunction(this, FName(BeatFunctionCalls[BeatOfMeasure - 1]));
 	GetGameInstance()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
 
+	FTimerDelegate CounterTimerDelegate;
+	FTimerHandle CounterTimerHandle;
+
+	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
+	GetGameInstance()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, false);
+
 	BeatOfMeasure = (BeatOfMeasure  % 4) + 1;
 }
 
-void AMusicManager::CallBlueprintFunction() {
+void AMusicManager::CallBlueprintFunction()
+{
 	FOutputDeviceNull ar;
 	const FString command = FString::Printf(TEXT("Ball true"));
 	if (blueprintActor) {
@@ -59,7 +61,8 @@ void AMusicManager::CallBlueprintFunction() {
 void AMusicManager::DownBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("1"));
-	CallBlueprintFunction();
+	//CallBlueprintFunction();
+	SpawnRocks();
 }
 
 void AMusicManager::SecondBeatFired()

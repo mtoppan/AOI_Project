@@ -41,11 +41,15 @@ public:
 	UFUNCTION()
 	void FourthBeatFired();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Song Stats")
 	float CurrentBPM;
 
 	void CallBlueprintFunction();
 	UPROPERTY(EditAnywhere, Category = "BlueprintClass")
     AActor* blueprintActor;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnRocks();
 
 
 protected:

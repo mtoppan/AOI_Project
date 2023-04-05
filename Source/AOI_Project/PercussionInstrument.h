@@ -22,6 +22,9 @@ class AOI_PROJECT_API APercussionInstrument : public ACollectable
 
 	UFUNCTION()
 	void EndDrum();
+
+	bool AddedTrack = false;
+
 public:	
 	// Sets default values for this actor's properties
 	APercussionInstrument();
@@ -35,4 +38,12 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void UseInstrument() override;
 	virtual void PickUpInstrument() override;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayDrumSound();
+	UFUNCTION(BlueprintImplementableEvent)
+	void AddDrumTrack();
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision Parameters")
+	bool Playing;
+
 };
