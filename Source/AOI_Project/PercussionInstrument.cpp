@@ -39,7 +39,7 @@ void APercussionInstrument::Tick(float DeltaTime)
 void APercussionInstrument::UseInstrument()
 {
 	// turn visuals on and trigger collision check
-	CollisionVisual->ToggleVisibility();
+	//CollisionVisual->ToggleVisibility();
 	SphereCollision->SetGenerateOverlapEvents(true);
 
 	PlayDrumSound();
@@ -62,7 +62,7 @@ void APercussionInstrument::PickUpInstrument()
 void APercussionInstrument::EndDrum()
 {
 	// turn visuals off and end collision check
-	CollisionVisual->ToggleVisibility();
+	//CollisionVisual->ToggleVisibility();
 	SphereCollision->SetGenerateOverlapEvents(false);
 	Playing = false;
 	
