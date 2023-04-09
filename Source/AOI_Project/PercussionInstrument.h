@@ -43,6 +43,7 @@ public:
 	void PlayDrumSound();
 	UFUNCTION(BlueprintImplementableEvent)
 	void AddDrumTrack();
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision Parameters")
 	bool Playing;
 
