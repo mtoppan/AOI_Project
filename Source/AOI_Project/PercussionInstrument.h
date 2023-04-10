@@ -15,8 +15,8 @@ class AOI_PROJECT_API APercussionInstrument : public ACollectable
 
 	UPROPERTY()
 	AMusicManager* MusicManager;
-	UPROPERTY(EditAnywhere, Category = "Collision")
-	class UStaticMeshComponent* CollisionVisual;
+	//UPROPERTY(EditAnywhere, Category = "Collision")
+	//class UStaticMeshComponent* CollisionVisual;
 	UPROPERTY(EditAnywhere, Category = "Collision")
 	class USphereComponent* SphereCollision;
 
@@ -41,6 +41,8 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayDrumSound();
+	UFUNCTION(BlueprintImplementableEvent)
+	void CrackRock();
 	UFUNCTION(BlueprintImplementableEvent)
 	void AddDrumTrack();
 	

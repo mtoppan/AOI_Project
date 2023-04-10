@@ -13,8 +13,8 @@ APercussionInstrument::APercussionInstrument()
 	PrimaryActorTick.bCanEverTick = true;
 	RootComponent = Root;
 	Root = CreateDefaultSubobject<USceneComponent>(TEXT("Root"));
-	CollisionVisual = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Sphere Mesh"));
-	CollisionVisual->SetupAttachment(Root);
+	//CollisionVisual = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Sphere Mesh"));
+	//CollisionVisual->SetupAttachment(Root);
 	SphereCollision = CreateDefaultSubobject<USphereComponent>(TEXT("Sphere Collider"));
 	SphereCollision->SetupAttachment(Root);
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Object Mesh"));
@@ -43,6 +43,7 @@ void APercussionInstrument::UseInstrument()
 	SphereCollision->SetGenerateOverlapEvents(true);
 
 	PlayDrumSound();
+	CrackRock();
 	Playing = true;
 	FTimerDelegate TimerDelegate;
 	FTimerHandle TimerHandle;
