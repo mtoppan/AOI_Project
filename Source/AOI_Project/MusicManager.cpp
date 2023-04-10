@@ -62,7 +62,7 @@ void AMusicManager::DownBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("1"));
 	//CallBlueprintFunction();
-	SpawnRocks();
+	//SpawnRocks();
 }
 
 void AMusicManager::SecondBeatFired()
@@ -78,6 +78,8 @@ void AMusicManager::ThirdBeatFired()
 void AMusicManager::FourthBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("4"));
+	SpawnRocks();
+
 }
 
 // Called every frame
