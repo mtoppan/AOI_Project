@@ -58,13 +58,15 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void SpawnRocks();
+	UFUNCTION(BlueprintImplementableEvent)
+	void SetupSpawns();
 
 	// Variables for spawning objects
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
 	TArray<TSubclassOf<AActor>> BPClassesToSpawn;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
-	TArray<USceneComponent*> SpawnPoints;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
+	//TArray<USceneComponent*> SpawnPoints;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
 	TArray<int> LifeSpans;
 
