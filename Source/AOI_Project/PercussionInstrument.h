@@ -17,8 +17,6 @@ class AOI_PROJECT_API APercussionInstrument : public ACollectable
 	AMusicManager* MusicManager;
 	//UPROPERTY(EditAnywhere, Category = "Collision")
 	//class UStaticMeshComponent* CollisionVisual;
-	UPROPERTY(EditAnywhere, Category = "Collision")
-	class USphereComponent* SphereCollision;
 
 	UFUNCTION()
 	void EndDrum();
@@ -48,5 +46,7 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision Parameters")
 	bool Playing;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
+	class USphereComponent* SphereCollision;
 
 };

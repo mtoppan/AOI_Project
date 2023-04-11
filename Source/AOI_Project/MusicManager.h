@@ -40,6 +40,14 @@ public:
 	void ThirdBeatFired();
 	UFUNCTION()
 	void FourthBeatFired();
+	UFUNCTION()
+	void FifthBeatFired();
+	UFUNCTION()
+	void SixthBeatFired();
+	UFUNCTION()
+	void SeventhBeatFired();
+	UFUNCTION()
+	void EighthBeatFired();
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Song Stats")
 	float CurrentBPM;
@@ -50,6 +58,20 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void SpawnRocks();
+	UFUNCTION(BlueprintImplementableEvent)
+	void SetupSpawns();
+
+	// Variables for spawning objects
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
+	TArray<TSubclassOf<AActor>> BPClassesToSpawn;
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
+	//TArray<USceneComponent*> SpawnPoints;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
+	TArray<int> LifeSpans;
+
+
+	void SetUpSpawning();
 
 
 protected:
