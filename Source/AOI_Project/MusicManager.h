@@ -57,19 +57,23 @@ public:
     AActor* blueprintActor;
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void SpawnRocks();
+	void SpawnRocksBeat1Cave();
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnRocksBeat4Cave();
 	UFUNCTION(BlueprintImplementableEvent)
 	void SetupSpawns();
 
 	// Variables for spawning objects
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
-	TArray<TSubclassOf<AActor>> BPClassesToSpawn;
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
-	//TArray<USceneComponent*> SpawnPoints;
+	TArray<TSubclassOf<AActor>> BPClassesToSpawnBeat1Cave;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
-	TArray<int> LifeSpans;
+	TArray<TSubclassOf<AActor>> BPClassesToSpawnBeat4Cave;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
+	TArray<int> LifeSpansBeat1Cave;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
+	TArray<int> LifeSpansBeat4Cave;
 
 	void SetUpSpawning();
 
