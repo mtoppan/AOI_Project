@@ -36,6 +36,7 @@ public:
 	virtual void Tick(float DeltaTime) override;
 	virtual void UseInstrument() override;
 	virtual void PickUpInstrument() override;
+	virtual void ResetInstrument() override;
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayDrumSound();
@@ -48,5 +49,6 @@ public:
 	bool Playing;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
 	class USphereComponent* SphereCollision;
+	
 
 };

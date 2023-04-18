@@ -42,6 +42,8 @@ public:
 	class UStaticMeshComponent* InstrumentOnBack;
 	UPROPERTY(EditAnywhere, Category = "Instruments on Back")
 	class UStaticMeshComponent* Drum;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resetting")
+	bool Resetting;
 	
 
 	// Camera variables
@@ -49,6 +51,9 @@ public:
 	float CameraTurnRate = 0.7f;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Camera")
 	float CameraLookUpRate = 0.7f;
+
+	UFUNCTION(BlueprintCallable)
+	void LoseInstrument();
 
 protected:
 	// Called when the game starts or when spawned
