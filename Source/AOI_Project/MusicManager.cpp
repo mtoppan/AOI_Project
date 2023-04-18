@@ -32,9 +32,6 @@ void AMusicManager::SetUpSpawning()
 	SpawnPoints.Add(SceneComponent6);*/
 
 	// amount of time they should live, these can be added in blueprint
-	LifeSpans.Add(4);
-	LifeSpans.Add(4);
-	LifeSpans.Add(4);
 }
 
 // Called when the game starts or when spawned
@@ -92,7 +89,7 @@ void AMusicManager::CallBlueprintFunction()
 void AMusicManager::DownBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("1"));
-	//SpawnRocks();
+	SpawnRocksBeat1Cave();
 }
 
 void AMusicManager::SecondBeatFired()
@@ -108,7 +105,7 @@ void AMusicManager::ThirdBeatFired()
 void AMusicManager::FourthBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("4"));
-	SpawnRocks();
+	SpawnRocksBeat4Cave();
 }
 
 void AMusicManager::FifthBeatFired()
