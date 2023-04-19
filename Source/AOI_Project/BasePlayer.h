@@ -30,6 +30,10 @@ class AOI_PROJECT_API ABasePlayer : public ACharacter
 	ACollectable* CurrentUsableInstrument;
 
 	void UseOrSetInstrument();
+	UPROPERTY()
+	USoundBase* LoseInstrumentSound;
+	UFUNCTION()
+	void PutInstrumentBack();
 
 
 public:
