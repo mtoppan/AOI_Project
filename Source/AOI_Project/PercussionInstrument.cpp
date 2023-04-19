@@ -26,6 +26,7 @@ APercussionInstrument::APercussionInstrument()
 void APercussionInstrument::BeginPlay()
 {
 	Super::BeginPlay();
+	StartingLocation = GetActorLocation();
 	MusicManager = (AMusicManager*)UGameplayStatics::GetActorOfClass(GetWorld(), AMusicManager::StaticClass());
 }
 
@@ -58,6 +59,13 @@ void APercussionInstrument::PickUpInstrument()
 	BasePlayer->InstrumentOnBack = BasePlayer->Drum;
 
 	AttachToActor(BasePlayer, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+}
+
+void APercussionInstrument::ResetInstrument()
+{
+	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
+	SetActorLocation(StartingLocation);
+	AddedTrack = false;
 }
 
 void APercussionInstrument::EndDrum()

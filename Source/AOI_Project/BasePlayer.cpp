@@ -59,7 +59,8 @@ void ABasePlayer::MoveForward(float InputValue)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
 
 		// add movement input
-		AddMovementInput(Direction, InputValue);
+		if (!Resetting)
+			AddMovementInput(Direction, InputValue);
 
 	}
 }
@@ -73,7 +74,8 @@ void ABasePlayer::MoveRight(float InputValue)
 		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
 
 		// add movement input
-		AddMovementInput(Direction, InputValue);
+		if (!Resetting)
+			AddMovementInput(Direction, InputValue);
 
 	}
 }
@@ -122,6 +124,25 @@ void ABasePlayer::UseOrSetInstrument()
 	}
 }
 
+void ABasePlayer::LoseInstrument()
+{
+	// visibility of mesh in world
+	if (CurrentUsableInstrument != nullptr)
+	{
+		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
+		CurrentUsableInstrument->ResetInstrument();
+		CurrentSelectableInstrument = nullptr;
+	}
+	
+	CurrentUsableInstrument = nullptr;
+	// visibility of mesh on back
+	if (InstrumentOnBack != nullptr)
+	{
+		InstrumentOnBack->ToggleVisibility();
+		InstrumentOnBack = nullptr;
+	}
+	
+}
 
 // Called to bind functionality to input
 void ABasePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

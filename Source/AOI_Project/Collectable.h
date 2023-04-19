@@ -25,11 +25,14 @@ protected:
 	UPROPERTY()
 	class UCharacterMovementComponent* Movement;
 
+	FVector StartingLocation;
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 	virtual void UseInstrument();
 	virtual void PickUpInstrument();
+	virtual void ResetInstrument();
 
 	UPROPERTY(EditAnywhere, Category = "Root")
 	class USceneComponent* Root;

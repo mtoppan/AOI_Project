@@ -11,7 +11,7 @@ ACollectable::ACollectable()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
+	StartingLocation = GetActorLocation();
 }
 
 // Called when the game starts or when spawned
@@ -30,6 +30,11 @@ void ACollectable::UseInstrument()
 void ACollectable::PickUpInstrument()
 {
 }
+
+void ACollectable::ResetInstrument()
+{
+}
+
 
 // Called every frame
 void ACollectable::Tick(float DeltaTime)
