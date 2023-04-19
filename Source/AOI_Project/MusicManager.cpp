@@ -56,6 +56,12 @@ void AMusicManager::BeginPlay()
 
 	DownBeatFired();
 	CountBeat();
+
+	
+	FTimerDelegate CounterTimerDelegate;
+	FTimerHandle CounterTimerHandle;
+	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
+	GetGameInstance()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, true);
 }
 
 void AMusicManager::CountBeat()
@@ -67,12 +73,6 @@ void AMusicManager::CountBeat()
 
 	BeatTimerDelegate.BindUFunction(this, FName(BeatFunctionCalls[BeatOfMeasure - 1]));
 	GetGameInstance()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
-
-	FTimerDelegate CounterTimerDelegate;
-	FTimerHandle CounterTimerHandle;
-
-	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
-	GetGameInstance()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, false);
 
 	BeatOfMeasure = (BeatOfMeasure  % 8) + 1;
 }
