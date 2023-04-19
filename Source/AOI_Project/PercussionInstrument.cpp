@@ -19,7 +19,7 @@ APercussionInstrument::APercussionInstrument()
 	SphereCollision->SetupAttachment(Root);
 	BaseMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Object Mesh"));
 	BaseMesh->SetupAttachment(Root);
-
+	
 }
 
 // Called when the game starts or when spawned
@@ -28,6 +28,9 @@ void APercussionInstrument::BeginPlay()
 	Super::BeginPlay();
 	StartingLocation = GetActorLocation();
 	MusicManager = (AMusicManager*)UGameplayStatics::GetActorOfClass(GetWorld(), AMusicManager::StaticClass());
+
+	const FString Path = FString::Printf(TEXT("/Game/Sounds/SFX/getDrum"));
+	PickUpDrumSound = Cast<USoundBase>(StaticLoadObject(USoundBase::StaticClass(), nullptr,*Path));
 }
 
 // Called every frame
@@ -41,16 +44,30 @@ void APercussionInstrument::UseInstrument()
 {
 	// turn visuals on and trigger collision check
 	//CollisionVisual->ToggleVisibility();
-	SphereCollision->SetGenerateOverlapEvents(true);
+	if (!CooldownActive)
+	{
+		SphereCollision->SetGenerateOverlapEvents(true);
 
-	PlayDrumSound();
-	CrackRock();
-	Playing = true;
-	FTimerDelegate TimerDelegate;
-	FTimerHandle TimerHandle;
+		PlayDrumSound();
+		CrackRock();
+		Playing = true;
+		FTimerDelegate TimerDelegate;
+		FTimerHandle TimerHandle;
 
-	TimerDelegate.BindUFunction(this, FName("EndDrum"));
-	GetGameInstance()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 60 / MusicManager->CurrentBPM, false);
+		if (!AddedTrack)
+			ShowMusicClef();
+
+		TimerDelegate.BindUFunction(this, FName("EndDrum"));
+		GetGameInstance()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 60 / MusicManager->CurrentBPM, false);
+
+		CooldownActive = true;
+	
+		FTimerDelegate CooldownDelegate;
+		FTimerHandle CooldownHandle;
+
+		CooldownDelegate.BindUFunction(this, FName("CoolDownEnd"));
+		GetGameInstance()->GetTimerManager().SetTimer(CooldownHandle, CooldownDelegate, 5, false);
+	}
 }
 
 void APercussionInstrument::PickUpInstrument()
@@ -59,6 +76,13 @@ void APercussionInstrument::PickUpInstrument()
 	BasePlayer->InstrumentOnBack = BasePlayer->Drum;
 
 	AttachToActor(BasePlayer, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
+	UGameplayStatics::PlaySound2D(GetWorld(), PickUpDrumSound, 1, 1, 0, nullptr, nullptr);
+
+	if (!FirstTimePickUp)
+	{
+		FirstTimePickUp = true;
+		ShowUI();
+	}
 }
 
 void APercussionInstrument::ResetInstrument()
@@ -81,6 +105,12 @@ void APercussionInstrument::EndDrum()
 		AddedTrack = true;
 	}
 }
+
+void APercussionInstrument::CoolDownEnd()
+{
+	CooldownActive = false;
+}
+
 
 
 

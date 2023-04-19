@@ -6,6 +6,7 @@
 #include "Camera/CameraComponent.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 ABasePlayer::ABasePlayer()
@@ -41,6 +42,9 @@ void ABasePlayer::BeginPlay()
 	}
 
 	CurrentUsableInstrument = nullptr;
+
+	const FString Path = FString::Printf(TEXT("/Game/Sounds/SFX/loseInstrument"));
+	LoseInstrumentSound = Cast<USoundBase>(StaticLoadObject(USoundBase::StaticClass(), nullptr,*Path));
 }
 
 // Called every frame
@@ -126,15 +130,15 @@ void ABasePlayer::UseOrSetInstrument()
 
 void ABasePlayer::LoseInstrument()
 {
-	// visibility of mesh in world
 	if (CurrentUsableInstrument != nullptr)
-	{
-		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
-		CurrentUsableInstrument->ResetInstrument();
-		CurrentSelectableInstrument = nullptr;
-	}
+		UGameplayStatics::PlaySound2D(GetWorld(), LoseInstrumentSound, 1, 1, 0, nullptr, nullptr);
 	
-	CurrentUsableInstrument = nullptr;
+	FTimerDelegate InstrumentDelegate;
+	FTimerHandle InstrumentHandle;
+	
+	InstrumentDelegate.BindUFunction(this, FName("PutInstrumentBack"));
+	GetGameInstance()->GetTimerManager().SetTimer(InstrumentHandle, InstrumentDelegate, 1.1, false);
+	
 	// visibility of mesh on back
 	if (InstrumentOnBack != nullptr)
 	{
@@ -143,6 +147,19 @@ void ABasePlayer::LoseInstrument()
 	}
 	
 }
+
+void ABasePlayer::PutInstrumentBack()
+{
+	// visibility of mesh in world
+	if (CurrentUsableInstrument != nullptr)
+	{
+		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
+		CurrentUsableInstrument->ResetInstrument();
+		CurrentSelectableInstrument = nullptr;
+		CurrentUsableInstrument = nullptr;
+	}
+}
+
 
 // Called to bind functionality to input
 void ABasePlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
