@@ -130,8 +130,8 @@ void ABasePlayer::UseOrSetInstrument()
 
 void ABasePlayer::LoseInstrument()
 {
-	
-	UGameplayStatics::PlaySound2D(GetWorld(), LoseInstrumentSound, 1, 1, 0, nullptr, nullptr);
+	if (CurrentUsableInstrument != nullptr)
+		UGameplayStatics::PlaySound2D(GetWorld(), LoseInstrumentSound, 1, 1, 0, nullptr, nullptr);
 	
 	FTimerDelegate InstrumentDelegate;
 	FTimerHandle InstrumentHandle;
@@ -139,7 +139,6 @@ void ABasePlayer::LoseInstrument()
 	InstrumentDelegate.BindUFunction(this, FName("PutInstrumentBack"));
 	GetGameInstance()->GetTimerManager().SetTimer(InstrumentHandle, InstrumentDelegate, 1.1, false);
 	
-	CurrentUsableInstrument = nullptr;
 	// visibility of mesh on back
 	if (InstrumentOnBack != nullptr)
 	{
@@ -157,6 +156,7 @@ void ABasePlayer::PutInstrumentBack()
 		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
 		CurrentUsableInstrument->ResetInstrument();
 		CurrentSelectableInstrument = nullptr;
+		CurrentUsableInstrument = nullptr;
 	}
 }
 

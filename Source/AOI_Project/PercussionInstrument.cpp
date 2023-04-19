@@ -54,6 +54,9 @@ void APercussionInstrument::UseInstrument()
 		FTimerDelegate TimerDelegate;
 		FTimerHandle TimerHandle;
 
+		if (!AddedTrack)
+			ShowMusicClef();
+
 		TimerDelegate.BindUFunction(this, FName("EndDrum"));
 		GetGameInstance()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 60 / MusicManager->CurrentBPM, false);
 
@@ -74,6 +77,12 @@ void APercussionInstrument::PickUpInstrument()
 
 	AttachToActor(BasePlayer, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	UGameplayStatics::PlaySound2D(GetWorld(), PickUpDrumSound, 1, 1, 0, nullptr, nullptr);
+
+	if (!FirstTimePickUp)
+	{
+		FirstTimePickUp = true;
+		ShowUI();
+	}
 }
 
 void APercussionInstrument::ResetInstrument()

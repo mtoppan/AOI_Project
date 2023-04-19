@@ -28,6 +28,8 @@ class AOI_PROJECT_API APercussionInstrument : public ACollectable
 	void CoolDownEnd();
 	bool CooldownActive = false;
 
+	bool FirstTimePickUp = false;
+
 public:	
 	// Sets default values for this actor's properties
 	APercussionInstrument();
@@ -49,6 +51,10 @@ public:
 	void CrackRock();
 	UFUNCTION(BlueprintImplementableEvent)
 	void AddDrumTrack();
+	UFUNCTION(BlueprintImplementableEvent)
+	void ShowUI();
+	UFUNCTION(BlueprintImplementableEvent)
+	void ShowMusicClef();
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
 	bool AddedTrack = false;
 	
