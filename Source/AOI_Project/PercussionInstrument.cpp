@@ -66,7 +66,7 @@ void APercussionInstrument::UseInstrument()
 		FTimerHandle CooldownHandle;
 
 		CooldownDelegate.BindUFunction(this, FName("CoolDownEnd"));
-		GetGameInstance()->GetTimerManager().SetTimer(CooldownHandle, CooldownDelegate, 5, false);
+		GetGameInstance()->GetTimerManager().SetTimer(CooldownHandle, CooldownDelegate, 3, false);
 	}
 }
 
@@ -83,6 +83,8 @@ void APercussionInstrument::PickUpInstrument()
 		FirstTimePickUp = true;
 		ShowUI();
 	}
+
+	ShowDrumIcon();
 }
 
 void APercussionInstrument::ResetInstrument()
