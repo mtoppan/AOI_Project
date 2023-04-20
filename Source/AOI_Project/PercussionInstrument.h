@@ -54,6 +54,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void ShowUI();
 	UFUNCTION(BlueprintImplementableEvent)
+	void ShowDrumIcon();
+	UFUNCTION(BlueprintImplementableEvent)
 	void ShowMusicClef();
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
 	bool AddedTrack = false;
