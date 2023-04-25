@@ -32,7 +32,7 @@ public:
 	TEnumAsByte<Meters> MeterBottom;
 
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void DownBeatFired();
 	UFUNCTION()
 	void SecondBeatFired();
@@ -63,6 +63,16 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void SetupSpawns();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void TriggerLights();
+	UFUNCTION(BlueprintImplementableEvent)
+	void TriggerLightsLowerIntensity();
+	UFUNCTION(BlueprintImplementableEvent)
+	void PulseRock();
+	UFUNCTION(BlueprintImplementableEvent)
+	void PulseRockSmall();
+
+
 	// Variables for spawning objects
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Spawning Objects")
@@ -82,7 +92,7 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
-	UFUNCTION()
+	UFUNCTION(BlueprintCallable)
 	void CountBeat();
 
 public:	
