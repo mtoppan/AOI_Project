@@ -3,6 +3,8 @@
 
 #include "MusicManager.h"
 
+#include "Evaluation/IMovieSceneEvaluationHook.h"
+
 // Sets default values
 AMusicManager::AMusicManager()
 {
@@ -54,8 +56,8 @@ void AMusicManager::BeginPlay()
 	// change these per music piece, assumed base is 1/4
 	//MeterTop = Meters::Four;
 
-	DownBeatFired();
-	CountBeat();
+	//DownBeatFired();
+	//CountBeat();
 
 	
 	FTimerDelegate CounterTimerDelegate;
@@ -90,39 +92,48 @@ void AMusicManager::DownBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("1"));
 	SpawnRocksBeat1Cave();
+	TriggerLights();
 }
 
 void AMusicManager::SecondBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("2"));
+	PulseRock();
 }
 
 void AMusicManager::ThirdBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("3"));
+	PulseRockSmall();
 }
 
 void AMusicManager::FourthBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("4"));
 	SpawnRocksBeat4Cave();
+	PulseRock();
 }
 
 void AMusicManager::FifthBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("5"));
+	TriggerLightsLowerIntensity();
+	PulseRockSmall();
 }
 void AMusicManager::SixthBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("6"));
+	PulseRock();
 }
 void AMusicManager::SeventhBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("7"));
+	PulseRockSmall();
 }
 void AMusicManager::EighthBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("8"));
+	PulseRock();
 }
 // Called every frame
 void AMusicManager::Tick(float DeltaTime)
