@@ -124,6 +124,7 @@ void ABasePlayer::UseOrSetInstrument()
 		CurrentSelectableInstrument->PickUpInstrument();
 		CurrentUsableInstrument = CurrentSelectableInstrument;
 		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
+		CurrentUsableInstrument->HideEffects();
 		InstrumentOnBack->ToggleVisibility();
 	}
 }
@@ -155,8 +156,10 @@ void ABasePlayer::PutInstrumentBack()
 	{
 		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
 		CurrentUsableInstrument->ResetInstrument();
+		CurrentUsableInstrument->ShowEffects();
 		CurrentSelectableInstrument = nullptr;
 		CurrentUsableInstrument = nullptr;
+		
 	}
 }
 

@@ -21,6 +21,16 @@ class AOI_PROJECT_API AMusicManager : public AActor
 
 	TArray<FString> BeatFunctionCalls;
 	int BeatOfMeasure;
+
+	int GraceAmount = 5;
+	UFUNCTION()
+	void BeatGracePeriodOn();
+	UFUNCTION()
+	void BeatGracePeriodOff();
+	UFUNCTION()
+	void GracePeriodOnLoop();
+	UFUNCTION()
+	void GracePeriodOffLoop();
 	
 public:	
 	// Sets default values for this actor's properties
@@ -31,6 +41,7 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Meter")
 	TEnumAsByte<Meters> MeterBottom;
 
+	bool OnBeat;
 
 	UFUNCTION(BlueprintCallable)
 	void DownBeatFired();
@@ -70,7 +81,7 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void PulseRock();
 	UFUNCTION(BlueprintImplementableEvent)
-	void PulseRockSmall();
+	void CrystalsPulse();
 
 
 	// Variables for spawning objects

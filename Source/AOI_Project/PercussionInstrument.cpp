@@ -37,15 +37,18 @@ void APercussionInstrument::BeginPlay()
 void APercussionInstrument::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	BaseMesh->AddRelativeRotation(FRotator(0, 1, 0));
 }
 
 void APercussionInstrument::UseInstrument()
 {
 	// turn visuals on and trigger collision check
 	//CollisionVisual->ToggleVisibility();
-	if (!CooldownActive)
+	if (/*!CooldownActive && */MusicManager->OnBeat)
 	{
+		ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
+		BasePlayer->Invincible = true;
+		
 		SphereCollision->SetGenerateOverlapEvents(true);
 
 		PlayDrumSound();
@@ -58,15 +61,15 @@ void APercussionInstrument::UseInstrument()
 			ShowMusicClef();
 
 		TimerDelegate.BindUFunction(this, FName("EndDrum"));
-		GetGameInstance()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 60 / MusicManager->CurrentBPM, false);
+		GetGameInstance()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 120 / MusicManager->CurrentBPM, false);
 
-		CooldownActive = true;
+		//CooldownActive = true;
 	
-		FTimerDelegate CooldownDelegate;
-		FTimerHandle CooldownHandle;
+		//FTimerDelegate CooldownDelegate;
+		//FTimerHandle CooldownHandle;
 
-		CooldownDelegate.BindUFunction(this, FName("CoolDownEnd"));
-		GetGameInstance()->GetTimerManager().SetTimer(CooldownHandle, CooldownDelegate, 3, false);
+		//CooldownDelegate.BindUFunction(this, FName("CoolDownEnd"));
+		//GetGameInstance()->GetTimerManager().SetTimer(CooldownHandle, CooldownDelegate, 3, false);
 	}
 }
 
@@ -74,7 +77,7 @@ void APercussionInstrument::PickUpInstrument()
 {
 	ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
 	BasePlayer->InstrumentOnBack = BasePlayer->Drum;
-
+	
 	AttachToActor(BasePlayer, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	UGameplayStatics::PlaySound2D(GetWorld(), PickUpDrumSound, 1, 1, 0, nullptr, nullptr);
 
@@ -101,6 +104,9 @@ void APercussionInstrument::EndDrum()
 	SphereCollision->SetGenerateOverlapEvents(false);
 	Playing = false;
 	
+	ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
+	BasePlayer->Invincible = false;
+	
 	if (!AddedTrack)
 	{
 		AddDrumTrack();
@@ -110,7 +116,7 @@ void APercussionInstrument::EndDrum()
 
 void APercussionInstrument::CoolDownEnd()
 {
-	CooldownActive = false;
+	//CooldownActive = false;
 }
 
 

@@ -59,6 +59,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void LoseInstrument();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Invincible")
+	bool Invincible;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
