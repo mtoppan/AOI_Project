@@ -48,6 +48,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayDrumSound();
 	UFUNCTION(BlueprintImplementableEvent)
+	void PlayWeakerDrumEffects();
+	UFUNCTION(BlueprintImplementableEvent)
 	void CrackRock();
 	UFUNCTION(BlueprintImplementableEvent)
 	void AddDrumTrack();

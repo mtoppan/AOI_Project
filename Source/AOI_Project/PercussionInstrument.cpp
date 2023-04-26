@@ -71,6 +71,10 @@ void APercussionInstrument::UseInstrument()
 		//CooldownDelegate.BindUFunction(this, FName("CoolDownEnd"));
 		//GetGameInstance()->GetTimerManager().SetTimer(CooldownHandle, CooldownDelegate, 3, false);
 	}
+	else if (!MusicManager->OnBeat)
+	{
+		PlayWeakerDrumEffects();
+	}
 }
 
 void APercussionInstrument::PickUpInstrument()

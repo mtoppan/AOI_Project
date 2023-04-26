@@ -6,27 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="197ca23f-161f-4dce-992f-785daaf41044" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/FX/NS_DrumIdle.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Materials/M_Drum.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Models/Instruments/drum.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Textures/drum_Base_color.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Textures/drum_Metallic.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Textures/drum_Roughness.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/BP_WeakCameraShake.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX/NS_WeakDrum.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_MusicManager.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_MusicManager.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_RockBigDrop.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_RockBigDrop.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_SoundVisualizer.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_SoundVisualizer.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX/NS_DrumSoundWave.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FX/NS_DrumSoundWave.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX/NS_DrumSoundWaveEcho.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FX/NS_DrumSoundWaveEcho.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/World.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/World.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Materials/M_DrumInitialBurst.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/M_DrumInitialBurst.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/Collectable.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/Collectable.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Materials/M_Drum.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Materials/M_Drum.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AOI_Project/PercussionInstrument.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/PercussionInstrument.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AOI_Project/PercussionInstrument.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/PercussionInstrument.h" afterDir="false" />
     </list>
@@ -75,7 +62,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682372581083</updated>
-      <workItem from="1682372587782" duration="18172000" />
+      <workItem from="1682372587782" duration="20613000" />
     </task>
     <servers />
   </component>

@@ -10,7 +10,21 @@ AMusicManager::AMusicManager()
 {
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-	SetUpSpawning();
+	//SetUpSpawning();
+
+	BeatFunctionCalls.Add("DownBeatFired");
+	BeatFunctionCalls.Add("SecondBeatFired");
+	BeatFunctionCalls.Add("ThirdBeatFired");
+	BeatFunctionCalls.Add("FourthBeatFired");
+	BeatFunctionCalls.Add("FifthBeatFired");
+	BeatFunctionCalls.Add("SixthBeatFired");
+	BeatFunctionCalls.Add("SeventhBeatFired");
+	BeatFunctionCalls.Add("EighthBeatFired");
+
+	CurrentBPM = 100;
+	// 10 is equivalent to .1 seconds before and after beat (i.e. total grace period of .2 seconds)
+	GraceAmount = 10;
+	BeatOfMeasure = 2;
 }
 
 void AMusicManager::SetUpSpawning()
@@ -41,19 +55,7 @@ void AMusicManager::BeginPlay()
 {
 	Super::BeginPlay();
 	//SetupSpawns();
-	BeatFunctionCalls.Add("DownBeatFired");
-	BeatFunctionCalls.Add("SecondBeatFired");
-	BeatFunctionCalls.Add("ThirdBeatFired");
-	BeatFunctionCalls.Add("FourthBeatFired");
-	BeatFunctionCalls.Add("FifthBeatFired");
-	BeatFunctionCalls.Add("SixthBeatFired");
-	BeatFunctionCalls.Add("SeventhBeatFired");
-	BeatFunctionCalls.Add("EighthBeatFired");
-
-	CurrentBPM = 100;
-	// 10 is equivalent to .1 seconds before and after beat (i.e. total grace period of .2 seconds)
-	GraceAmount = 10;
-	BeatOfMeasure = 2;
+	
 	
 	// change these per music piece, assumed base is 1/4
 	//MeterTop = Meters::Four;
