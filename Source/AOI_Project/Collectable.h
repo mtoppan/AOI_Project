@@ -39,4 +39,10 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Mesh")
 	class UStaticMeshComponent* BaseMesh;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void ShowEffects();
+	UFUNCTION(BlueprintImplementableEvent)
+	void HideEffects();
+
+
 };

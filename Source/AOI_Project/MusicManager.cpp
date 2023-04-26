@@ -51,33 +51,88 @@ void AMusicManager::BeginPlay()
 	BeatFunctionCalls.Add("EighthBeatFired");
 
 	CurrentBPM = 100;
+	// 10 is equivalent to .1 seconds before and after beat (i.e. total grace period of .2 seconds)
+	GraceAmount = 10;
 	BeatOfMeasure = 2;
-
+	
 	// change these per music piece, assumed base is 1/4
 	//MeterTop = Meters::Four;
 
+	// Function calls moved to BP
 	//DownBeatFired();
 	//CountBeat();
 
-	
+	// Timer for calling each beat 
 	FTimerDelegate CounterTimerDelegate;
 	FTimerHandle CounterTimerHandle;
 	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
 	GetGameInstance()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, true);
+
+	// Timer that triggers calls for the start of the beat grace period
+	FTimerDelegate GraceOnTimerDelegate;
+	FTimerHandle GraceOnTimerHandle;
+	
+	GraceOnTimerDelegate.BindUFunction(this, FName("BeatGracePeriodOn"));
+	GetWorld()->GetTimerManager().SetTimer(GraceOnTimerHandle, GraceOnTimerDelegate, (60 - (CurrentBPM / GraceAmount)) / CurrentBPM, false);
+
+	// Timer that triggers calls for the end of the beat grace period
+	FTimerDelegate GraceOffTimerDelegate;
+	FTimerHandle GraceOffTimerHandle;
+	
+	GraceOffTimerDelegate.BindUFunction(this, FName("BeatGracePeriodOff"));
+	GetWorld()->GetTimerManager().SetTimer(GraceOffTimerHandle, GraceOffTimerDelegate, (60 + (CurrentBPM / GraceAmount)) / CurrentBPM, false);
 }
 
 void AMusicManager::CountBeat()
 {
+	// Timer for calling each beat 
 	FTimerDelegate BeatTimerDelegate;
 	FTimerHandle BeatTimerHandle;
 
 	FString BeatCallToFire = BeatFunctionCalls[BeatOfMeasure - 1];
 
 	BeatTimerDelegate.BindUFunction(this, FName(BeatFunctionCalls[BeatOfMeasure - 1]));
-	GetGameInstance()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
+	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
 
 	BeatOfMeasure = (BeatOfMeasure  % 8) + 1;
 }
+
+void AMusicManager::BeatGracePeriodOn()
+{
+	// this function is called after an initial delay, and then calls a looping function every beat
+
+	FTimerDelegate GraceOnTimerDelegate;
+	FTimerHandle GraceOnTimerHandle;
+	
+	GraceOnTimerDelegate.BindUFunction(this, FName("GracePeriodOnLoop"));
+	GetWorld()->GetTimerManager().SetTimer(GraceOnTimerHandle, GraceOnTimerDelegate, 60 / CurrentBPM, true);
+}
+
+void AMusicManager::BeatGracePeriodOff()
+{
+	// this function is called after an initial delay greater than BeatGracePeriodOn, and then calls a looping function every beat
+
+	FTimerDelegate GraceOffTimerDelegate;
+	FTimerHandle GraceOffTimerHandle;
+	
+	GraceOffTimerDelegate.BindUFunction(this, FName("GracePeriodOffLoop"));
+	GetWorld()->GetTimerManager().SetTimer(GraceOffTimerHandle, GraceOffTimerDelegate, 60 / CurrentBPM, true);
+}
+
+void AMusicManager::GracePeriodOnLoop()
+{
+	// this function loops to turn on the grace period
+	OnBeat = true;
+	
+}
+
+void AMusicManager::GracePeriodOffLoop()
+{
+	// this function loops to turn off the grace period
+	OnBeat = false;
+}
+
+
 
 void AMusicManager::CallBlueprintFunction()
 {
@@ -91,49 +146,53 @@ void AMusicManager::CallBlueprintFunction()
 void AMusicManager::DownBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("1"));
-	SpawnRocksBeat1Cave();
+	//SpawnRocksBeat1Cave();
 	TriggerLights();
 }
 
 void AMusicManager::SecondBeatFired()
 {
-	UE_LOG(LogTemp, Warning, TEXT("2"));
+	//UE_LOG(LogTemp, Warning, TEXT("2"));
 	PulseRock();
+	//CrystalsPulse();
 }
 
 void AMusicManager::ThirdBeatFired()
 {
-	UE_LOG(LogTemp, Warning, TEXT("3"));
-	PulseRockSmall();
+	//UE_LOG(LogTemp, Warning, TEXT("3"));
 }
 
 void AMusicManager::FourthBeatFired()
 {
-	UE_LOG(LogTemp, Warning, TEXT("4"));
+	//UE_LOG(LogTemp, Warning, TEXT("4"));
 	SpawnRocksBeat4Cave();
+	SpawnRocksBeat1Cave();
 	PulseRock();
+	//CrystalsPulse();
 }
 
 void AMusicManager::FifthBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("5"));
 	TriggerLightsLowerIntensity();
-	PulseRockSmall();
 }
 void AMusicManager::SixthBeatFired()
 {
-	UE_LOG(LogTemp, Warning, TEXT("6"));
+	//UE_LOG(LogTemp, Warning, TEXT("6"));
 	PulseRock();
+	//CrystalsPulse();
 }
 void AMusicManager::SeventhBeatFired()
 {
-	UE_LOG(LogTemp, Warning, TEXT("7"));
-	PulseRockSmall();
+	//UE_LOG(LogTemp, Warning, TEXT("7"));
 }
 void AMusicManager::EighthBeatFired()
 {
-	UE_LOG(LogTemp, Warning, TEXT("8"));
+	//UE_LOG(LogTemp, Warning, TEXT("8"));
 	PulseRock();
+	SpawnRocksBeat4Cave();
+	SpawnRocksBeat1Cave();
+	//CrystalsPulse();
 }
 // Called every frame
 void AMusicManager::Tick(float DeltaTime)

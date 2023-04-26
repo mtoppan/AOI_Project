@@ -64,6 +64,4 @@ public:
 	bool Playing;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision")
 	class USphereComponent* SphereCollision;
-	
-
 };
