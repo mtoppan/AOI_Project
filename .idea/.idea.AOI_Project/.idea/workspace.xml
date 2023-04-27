@@ -6,21 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="197ca23f-161f-4dce-992f-785daaf41044" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Blueprints/ST_SpawningRocks.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Animations/riggedRockDropBig_Skeleton_AnimBlueprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animations/riggedRockDropBig_Skeleton_AnimBlueprint.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Animations/riggedRockDropSmol_Skeleton_AnimBlueprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animations/riggedRockDropSmol_Skeleton_AnimBlueprint.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Animations/riggedRockHop_Skeleton_AnimBlueprint.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animations/riggedRockHop_Skeleton_AnimBlueprint.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_MusicManager.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_MusicManager.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_RockBigDrop.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_RockBigDrop.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/World.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/World.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Models/rockDrop/Big/riggedRockDropBig_Anim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Models/rockDrop/Big/riggedRockDropBig_Anim.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Models/rockDrop/Smol/riggedRockDropSmol_Anim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Models/rockDrop/Smol/riggedRockDropSmol_Anim.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Models/rockHop/riggedRockHop_Anim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Models/rockHop/riggedRockHop_Anim.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_SmallDroppedRock.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_SmallDroppedRock.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +60,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682372581083</updated>
-      <workItem from="1682372587782" duration="33299000" />
+      <workItem from="1682372587782" duration="34469000" />
     </task>
     <servers />
   </component>

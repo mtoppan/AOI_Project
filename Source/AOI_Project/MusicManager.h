@@ -60,6 +60,9 @@ public:
 	UFUNCTION()
 	void EighthBeatFired();
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void ResetRocks();
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Song Stats")
 	float CurrentBPM;
 

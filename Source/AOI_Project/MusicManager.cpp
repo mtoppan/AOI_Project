@@ -90,8 +90,8 @@ void AMusicManager::BeginPlay()
 	FTimerDelegate SecondSpawnTimerDelegate;
 	FTimerHandle SecondSpawnTimerHandle;
 	
-	//FirstSpawnTimerDelegate.BindUFunction(this, FName("SpawnFirstRocks"));
-	//GetWorld()->GetTimerManager().SetTimer(FirstSpawnTimerHandle, FirstSpawnTimerDelegate, 60 * 3 / CurrentBPM, false);
+	FirstSpawnTimerDelegate.BindUFunction(this, FName("SpawnFirstRocks"));
+	GetWorld()->GetTimerManager().SetTimer(FirstSpawnTimerHandle, FirstSpawnTimerDelegate, 60 * 3 / CurrentBPM, false);
 	//SecondSpawnTimerDelegate.BindUFunction(this, FName("SpawnFirstRocks"));
 	//GetWorld()->GetTimerManager().SetTimer(SecondSpawnTimerHandle, SecondSpawnTimerDelegate, 60 * 7 / CurrentBPM, false);
 }
@@ -176,8 +176,9 @@ void AMusicManager::FourthBeatFired()
 	//UE_LOG(LogTemp, Warning, TEXT("4"));
 	PulseRock();
 	//RespawnNecessaryRocks();
-	SpawnRocksBeat4Part1Cave();
-	SpawnRocksBeat4Part2Cave();
+	ResetRocks();
+	//SpawnRocksBeat4Part1Cave();
+	//SpawnRocksBeat4Part2Cave();
 }
 
 void AMusicManager::FifthBeatFired()
@@ -199,8 +200,8 @@ void AMusicManager::EighthBeatFired()
 	//UE_LOG(LogTemp, Warning, TEXT("8"));
 	PulseRock();
 	//RespawnNecessaryRocks();
-	SpawnRocksBeat4Part1Cave();
-	SpawnRocksBeat4Part2Cave();
+	//SpawnRocksBeat4Part1Cave();
+	//SpawnRocksBeat4Part2Cave();
 }
 // Called every frame
 void AMusicManager::Tick(float DeltaTime)
