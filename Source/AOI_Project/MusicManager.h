@@ -68,9 +68,11 @@ public:
     AActor* blueprintActor;
 
 	UFUNCTION(BlueprintImplementableEvent)
-	void SpawnRocksBeat1Cave();
+	void SpawnRocksBeat4Part2Cave();
 	UFUNCTION(BlueprintImplementableEvent)
-	void SpawnRocksBeat4Cave();
+	void ShowRocksBeat4Part2Cave();
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnRocksBeat4Part1Cave();
 	UFUNCTION(BlueprintImplementableEvent)
 	void SetupSpawns();
 
@@ -82,6 +84,11 @@ public:
 	void PulseRock();
 	UFUNCTION(BlueprintImplementableEvent)
 	void CrystalsPulse();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnFirstRocks();
+	UFUNCTION(BlueprintImplementableEvent)
+	void RespawnNecessaryRocks();
 
 
 	// Variables for spawning objects

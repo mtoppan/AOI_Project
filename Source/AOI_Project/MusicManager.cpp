@@ -24,7 +24,7 @@ AMusicManager::AMusicManager()
 	CurrentBPM = 100;
 	// 10 is equivalent to .1 seconds before and after beat (i.e. total grace period of .2 seconds)
 	GraceAmount = 10;
-	BeatOfMeasure = 2;
+	BeatOfMeasure = 3;
 }
 
 void AMusicManager::SetUpSpawning()
@@ -69,7 +69,8 @@ void AMusicManager::BeginPlay()
 	FTimerHandle CounterTimerHandle;
 	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
 	GetGameInstance()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 60 / CurrentBPM, true);
-
+	
+	
 	// Timer that triggers calls for the start of the beat grace period
 	FTimerDelegate GraceOnTimerDelegate;
 	FTimerHandle GraceOnTimerHandle;
@@ -83,6 +84,16 @@ void AMusicManager::BeginPlay()
 	
 	GraceOffTimerDelegate.BindUFunction(this, FName("BeatGracePeriodOff"));
 	GetWorld()->GetTimerManager().SetTimer(GraceOffTimerHandle, GraceOffTimerDelegate, (60 + (CurrentBPM / GraceAmount)) / CurrentBPM, false);
+
+	FTimerDelegate FirstSpawnTimerDelegate;
+	FTimerHandle FirstSpawnTimerHandle;
+	FTimerDelegate SecondSpawnTimerDelegate;
+	FTimerHandle SecondSpawnTimerHandle;
+	
+	//FirstSpawnTimerDelegate.BindUFunction(this, FName("SpawnFirstRocks"));
+	//GetWorld()->GetTimerManager().SetTimer(FirstSpawnTimerHandle, FirstSpawnTimerDelegate, 60 * 3 / CurrentBPM, false);
+	//SecondSpawnTimerDelegate.BindUFunction(this, FName("SpawnFirstRocks"));
+	//GetWorld()->GetTimerManager().SetTimer(SecondSpawnTimerHandle, SecondSpawnTimerDelegate, 60 * 7 / CurrentBPM, false);
 }
 
 void AMusicManager::CountBeat()
@@ -134,8 +145,6 @@ void AMusicManager::GracePeriodOffLoop()
 	OnBeat = false;
 }
 
-
-
 void AMusicManager::CallBlueprintFunction()
 {
 	FOutputDeviceNull ar;
@@ -148,7 +157,6 @@ void AMusicManager::CallBlueprintFunction()
 void AMusicManager::DownBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("1"));
-	//SpawnRocksBeat1Cave();
 	TriggerLights();
 }
 
@@ -156,7 +164,6 @@ void AMusicManager::SecondBeatFired()
 {
 	//UE_LOG(LogTemp, Warning, TEXT("2"));
 	PulseRock();
-	//CrystalsPulse();
 }
 
 void AMusicManager::ThirdBeatFired()
@@ -167,10 +174,10 @@ void AMusicManager::ThirdBeatFired()
 void AMusicManager::FourthBeatFired()
 {
 	//UE_LOG(LogTemp, Warning, TEXT("4"));
-	SpawnRocksBeat4Cave();
-	SpawnRocksBeat1Cave();
 	PulseRock();
-	//CrystalsPulse();
+	//RespawnNecessaryRocks();
+	SpawnRocksBeat4Part1Cave();
+	SpawnRocksBeat4Part2Cave();
 }
 
 void AMusicManager::FifthBeatFired()
@@ -182,7 +189,6 @@ void AMusicManager::SixthBeatFired()
 {
 	//UE_LOG(LogTemp, Warning, TEXT("6"));
 	PulseRock();
-	//CrystalsPulse();
 }
 void AMusicManager::SeventhBeatFired()
 {
@@ -192,9 +198,9 @@ void AMusicManager::EighthBeatFired()
 {
 	//UE_LOG(LogTemp, Warning, TEXT("8"));
 	PulseRock();
-	SpawnRocksBeat4Cave();
-	SpawnRocksBeat1Cave();
-	//CrystalsPulse();
+	//RespawnNecessaryRocks();
+	SpawnRocksBeat4Part1Cave();
+	SpawnRocksBeat4Part2Cave();
 }
 // Called every frame
 void AMusicManager::Tick(float DeltaTime)
