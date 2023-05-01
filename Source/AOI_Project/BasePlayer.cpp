@@ -23,9 +23,7 @@ ABasePlayer::ABasePlayer()
 	// Create camera
 	Camera = CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));
 	Camera->SetupAttachment(SpringArm);
-
-	Drum = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Drum"));
-	Drum->SetupAttachment(RootComponent);
+	
 }
 
 // Called when the game starts or when spawned
@@ -45,13 +43,25 @@ void ABasePlayer::BeginPlay()
 
 	const FString Path = FString::Printf(TEXT("/Game/Sounds/SFX/loseInstrument"));
 	LoseInstrumentSound = Cast<USoundBase>(StaticLoadObject(USoundBase::StaticClass(), nullptr,*Path));
+
+	TArray<UStaticMeshComponent*> StaticMeshes;
+	GetComponents<UStaticMeshComponent>(StaticMeshes);
+	
+	for (UStaticMeshComponent* Component : StaticMeshes)
+	{
+		if (Component->ComponentHasTag("Drum"))
+		{
+			Drum = Component;
+			break;
+		}
+	}
 }
 
 // Called every frame
 void ABasePlayer::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
+	
 }
 
 void ABasePlayer::MoveForward(float InputValue)
@@ -125,7 +135,10 @@ void ABasePlayer::UseOrSetInstrument()
 		CurrentUsableInstrument = CurrentSelectableInstrument;
 		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
 		CurrentUsableInstrument->HideEffects();
-		InstrumentOnBack->ToggleVisibility();
+		if (InstrumentOnBack != nullptr)
+		{
+			InstrumentOnBack->ToggleVisibility();
+		}
 	}
 }
 

@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Collectable.h"
 #include "Components/BoxComponent.h"
+#include "Components/StaticMeshComponent.h"
 #include "BasePlayer.generated.h"
 
 UCLASS()
@@ -18,7 +19,7 @@ class AOI_PROJECT_API ABasePlayer : public ACharacter
 	class USpringArmComponent* SpringArm;
 	UPROPERTY(VisibleAnywhere, Category = "Camera")
 	class UCameraComponent* Camera;
-
+	
 
 	UPROPERTY()
 	UBoxComponent* BoxCollision;
@@ -42,8 +43,8 @@ public:
 
 	UPROPERTY()
 	class UCharacterMovementComponent* Movement;
-	UPROPERTY()
-	class UStaticMeshComponent* InstrumentOnBack;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Instruments on Back")
+	UStaticMeshComponent* InstrumentOnBack;
 	UPROPERTY(EditAnywhere, Category = "Instruments on Back")
 	class UStaticMeshComponent* Drum;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resetting")
