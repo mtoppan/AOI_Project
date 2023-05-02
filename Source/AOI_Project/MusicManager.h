@@ -62,6 +62,9 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void ResetRocks();
+	UFUNCTION(BlueprintImplementableEvent)
+	void ResetRocksSecondSet();
+
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Song Stats")
 	float CurrentBPM;
@@ -91,8 +94,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void SpawnFirstRocks();
 	UFUNCTION(BlueprintImplementableEvent)
+	void SpawnFirstRocksSecondSet();
+	UFUNCTION(BlueprintImplementableEvent)
 	void RespawnNecessaryRocks();
-
 
 	// Variables for spawning objects
 

@@ -126,6 +126,7 @@ void ABasePlayer::UseOrSetInstrument()
 	if (CurrentUsableInstrument != nullptr)
 	{
 		CurrentUsableInstrument->UseInstrument();
+		AddMovementInput(FVector(1,0,0), 100);
 	}
 
 	// if player doesn't currently have an instrument, try to pick one up

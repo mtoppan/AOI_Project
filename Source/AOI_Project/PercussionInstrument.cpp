@@ -50,9 +50,12 @@ void APercussionInstrument::UseInstrument()
 		BasePlayer->Invincible = true;
 		
 		SphereCollision->SetGenerateOverlapEvents(true);
-
+		//SetActorRotation(FRotator(1,1,1));
 		PlayDrumSound();
 		CrackRock();
+
+		//UpdateOverlaps();
+		
 		Playing = true;
 		FTimerDelegate TimerDelegate;
 		FTimerHandle TimerHandle;
