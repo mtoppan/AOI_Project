@@ -6,12 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="197ca23f-161f-4dce-992f-785daaf41044" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/BP_HornInstrument.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX/NS_HornIdle.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Materials/M_Horn.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Models/Instruments/horn.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/AOI_Project/HornInstrument.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/AOI_Project/HornInstrument.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_MusicManager.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_MusicManager.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/World.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/World.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +62,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682372581083</updated>
-      <workItem from="1682372587782" duration="51575000" />
+      <workItem from="1682372587782" duration="56588000" />
     </task>
     <servers />
   </component>

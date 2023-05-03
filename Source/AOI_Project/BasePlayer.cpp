@@ -52,7 +52,11 @@ void ABasePlayer::BeginPlay()
 		if (Component->ComponentHasTag("Drum"))
 		{
 			Drum = Component;
-			break;
+		}
+
+		if (Component->ComponentHasTag("Horn"))
+		{
+			Horn = Component;
 		}
 	}
 }

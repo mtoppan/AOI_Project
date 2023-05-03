@@ -47,6 +47,8 @@ public:
 	UStaticMeshComponent* InstrumentOnBack;
 	UPROPERTY(EditAnywhere, Category = "Instruments on Back")
 	class UStaticMeshComponent* Drum;
+	UPROPERTY(EditAnywhere, Category = "Instruments on Back")
+	class UStaticMeshComponent* Horn;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Resetting")
 	bool Resetting;
 	
