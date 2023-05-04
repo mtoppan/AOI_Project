@@ -28,6 +28,7 @@ class AOI_PROJECT_API AHornInstrument : public ACollectable
 	bool FirstTimePickUp = false;
 
 	void Jump();
+	UFUNCTION()
 	void EndHorn();
 
 public:	

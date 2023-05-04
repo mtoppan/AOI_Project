@@ -112,6 +112,7 @@ void ABasePlayer::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActo
 {
 	if (OtherActor != nullptr && OtherActor->ActorHasTag("Instrument"))
 	{
+		CurrentSelectableInstrument = nullptr;
 		CurrentSelectableInstrument = (ACollectable*)OtherActor;
 	}
 }
@@ -126,25 +127,39 @@ void ABasePlayer::OnOverlapEnd(UPrimitiveComponent* OverlappedComponent, AActor*
 
 void ABasePlayer::UseOrSetInstrument()
 {
-	// if player currently has an instrument, use it
-	if (CurrentUsableInstrument != nullptr)
-	{
-		CurrentUsableInstrument->UseInstrument();
-		AddMovementInput(FVector(1,0,0), 100);
-	}
 
-	// if player doesn't currently have an instrument, try to pick one up
-	if (CurrentSelectableInstrument != nullptr && CurrentUsableInstrument == nullptr)
+	// if player is able to pick up an instrument, prioritize picking it up
+	if (CurrentSelectableInstrument != nullptr)
 	{
+		if (CurrentUsableInstrument != nullptr)
+		{
+			// disregard
+			//CurrentUsableInstrument->Destroy();
+			InstrumentOnBack->SetVisibility(false);
+			//CurrentUsableInstrument->SetActorLocation(FVector(0, 0, -10000));
+		}
+		//CurrentUsableInstrument = nullptr;
 		CurrentSelectableInstrument->PickUpInstrument();
 		CurrentUsableInstrument = CurrentSelectableInstrument;
 		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
 		CurrentUsableInstrument->HideEffects();
+		
 		if (InstrumentOnBack != nullptr)
 		{
 			InstrumentOnBack->ToggleVisibility();
 		}
 	}
+	else if (CurrentUsableInstrument != nullptr)
+	{
+		// if player currently has an instrument, use it
+
+		CurrentSelectableInstrument = nullptr;
+		CurrentUsableInstrument->UseInstrument();
+		// slight buffer in movement for drum
+		AddMovementInput(FVector(1,0,0), 100);
+	}
+
+	CurrentSelectableInstrument = nullptr;
 }
 
 void ABasePlayer::LoseInstrument()

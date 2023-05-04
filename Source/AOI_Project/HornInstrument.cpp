@@ -4,6 +4,7 @@
 #include "HornInstrument.h"
 #include "Kismet/GameplayStatics.h"
 #include "BasePlayer.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 // Sets default values
 AHornInstrument::AHornInstrument()
@@ -33,6 +34,8 @@ void AHornInstrument::BeginPlay()
 			break;
 		}
 	}
+
+	//Movement->JumpZVelocity = 100000;
 }
 
 // Called every frame
@@ -78,11 +81,10 @@ void AHornInstrument::PickUpInstrument()
 {
 	ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
 	BasePlayer->InstrumentOnBack = BasePlayer->Horn;
-	BasePlayer->Horn->SetVisibility(true);
+	
 	AttachToActor(BasePlayer, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
 	UGameplayStatics::PlaySound2D(GetWorld(), PickUpHornSound, 1, 1, 0, nullptr, nullptr);
-	BaseMesh->SetVisibility(false);
-	UE_LOG(LogTemp, Warning, TEXT("%s"), *BaseMesh->GetName());
+	
 	if (!FirstTimePickUp)
 	{
 		FirstTimePickUp = true;
@@ -94,11 +96,8 @@ void AHornInstrument::PickUpInstrument()
 void AHornInstrument::ResetInstrument()
 {
 	DetachFromActor(FDetachmentTransformRules::KeepWorldTransform);
-	BaseMesh->SetVisibility(true);
 	SetActorLocation(StartingLocation);
 	AddedTrack = false;
-	ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
-	BasePlayer->Horn->SetVisibility(false);
 }
 
 void AHornInstrument::CoolDownEnd()
@@ -107,7 +106,10 @@ void AHornInstrument::CoolDownEnd()
 
 void AHornInstrument::Jump()
 {
-	UE_LOG(LogTemp, Warning, TEXT("jump"));
+	Movement->SetMovementMode(MOVE_Falling);
+	FVector CurrentVelocity = Movement->Velocity;
+	FVector JumpVelocity = FVector(CurrentVelocity.X,CurrentVelocity.Y, 1000);
+	Movement->Velocity = JumpVelocity;
 }
 
 void AHornInstrument::EndHorn()
