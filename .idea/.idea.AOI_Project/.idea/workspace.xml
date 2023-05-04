@@ -6,16 +6,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="197ca23f-161f-4dce-992f-785daaf41044" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Content/FX/NS_HornSoundWave.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Materials/MI_HornBurst.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Materials/M_HornBurst.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_HornInstrument.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_HornInstrument.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Player.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Maps/World.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/World.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Models/rockHop/riggedRockHop_Anim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Models/rockHop/riggedRockHop_Anim.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/Collectable.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/Collectable.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/HornInstrument.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/HornInstrument.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/HornInstrument.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/HornInstrument.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +59,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1682372581083</updated>
-      <workItem from="1682372587782" duration="67061000" />
+      <workItem from="1682372587782" duration="69140000" />
     </task>
     <servers />
   </component>
