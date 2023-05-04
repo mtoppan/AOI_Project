@@ -141,12 +141,12 @@ void ABasePlayer::UseOrSetInstrument()
 		//CurrentUsableInstrument = nullptr;
 		CurrentSelectableInstrument->PickUpInstrument();
 		CurrentUsableInstrument = CurrentSelectableInstrument;
-		CurrentUsableInstrument->BaseMesh->ToggleVisibility();
+		CurrentUsableInstrument->BaseMesh->SetVisibility(false);
 		CurrentUsableInstrument->HideEffects();
 		
 		if (InstrumentOnBack != nullptr)
 		{
-			InstrumentOnBack->ToggleVisibility();
+			InstrumentOnBack->SetVisibility(true);
 		}
 	}
 	else if (CurrentUsableInstrument != nullptr)
@@ -156,7 +156,7 @@ void ABasePlayer::UseOrSetInstrument()
 		CurrentSelectableInstrument = nullptr;
 		CurrentUsableInstrument->UseInstrument();
 		// slight buffer in movement for drum
-		AddMovementInput(FVector(1,0,0), 100);
+		AddMovementInput(FVector(0,1,0), 100);
 	}
 
 	CurrentSelectableInstrument = nullptr;
