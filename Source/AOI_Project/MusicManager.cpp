@@ -29,25 +29,7 @@ AMusicManager::AMusicManager()
 
 void AMusicManager::SetUpSpawning()
 {
-	// classes to spawn are assigned in blueprint
-
-	// locations to spawn them at, moved in scene, should be created here in c++
-	/*USceneComponent* SceneComponent0 = CreateDefaultSubobject<USceneComponent>(TEXT("Spawn Point 0"));
-	USceneComponent* SceneComponent1 = CreateDefaultSubobject<USceneComponent>(TEXT("Spawn Point 1"));
-	USceneComponent* SceneComponent2 = CreateDefaultSubobject<USceneComponent>(TEXT("Spawn Point 2"));
-	USceneComponent* SceneComponent3 = CreateDefaultSubobject<USceneComponent>(TEXT("Spawn Point 3"));
-	USceneComponent* SceneComponent4 = CreateDefaultSubobject<USceneComponent>(TEXT("Spawn Point 4"));
-	USceneComponent* SceneComponent5 = CreateDefaultSubobject<USceneComponent>(TEXT("Spawn Point 5"));
-	USceneComponent* SceneComponent6 = CreateDefaultSubobject<USceneComponent>(TEXT("Spawn Point 6"));
-	SpawnPoints.Add(SceneComponent0);
-	SpawnPoints.Add(SceneComponent1);
-	SpawnPoints.Add(SceneComponent2);
-	SpawnPoints.Add(SceneComponent3);
-	SpawnPoints.Add(SceneComponent4);
-	SpawnPoints.Add(SceneComponent5);
-	SpawnPoints.Add(SceneComponent6);*/
-
-	// amount of time they should live, these can be added in blueprint
+	
 }
 
 // Called when the game starts or when spawned
@@ -94,6 +76,11 @@ void AMusicManager::BeginPlay()
 	GetWorld()->GetTimerManager().SetTimer(FirstSpawnTimerHandle, FirstSpawnTimerDelegate, 60 * 3 / CurrentBPM, false);
 	SecondSpawnTimerDelegate.BindUFunction(this, FName("SpawnFirstRocksSecondSet"));
 	GetWorld()->GetTimerManager().SetTimer(SecondSpawnTimerHandle, SecondSpawnTimerDelegate, 60 * 7 / CurrentBPM, false);
+}
+
+void AMusicManager::StartSecondAreaMusic()
+{
+	
 }
 
 void AMusicManager::CountBeat()
