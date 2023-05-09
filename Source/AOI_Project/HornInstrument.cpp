@@ -34,8 +34,6 @@ void AHornInstrument::BeginPlay()
 			break;
 		}
 	}
-
-	//Movement->JumpZVelocity = 100000;
 }
 
 // Called every frame

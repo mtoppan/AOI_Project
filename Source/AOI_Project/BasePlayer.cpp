@@ -112,7 +112,6 @@ void ABasePlayer::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActo
 {
 	if (OtherActor != nullptr && OtherActor->ActorHasTag("Instrument"))
 	{
-		CurrentSelectableInstrument = nullptr;
 		CurrentSelectableInstrument = (ACollectable*)OtherActor;
 	}
 }
@@ -136,18 +135,25 @@ void ABasePlayer::UseOrSetInstrument()
 			// disregard
 			//CurrentUsableInstrument->Destroy();
 			InstrumentOnBack->SetVisibility(false);
+			//CurrentUsableInstrument = nullptr;
 			//CurrentUsableInstrument->SetActorLocation(FVector(0, 0, -10000));
 		}
 		//CurrentUsableInstrument = nullptr;
-		CurrentSelectableInstrument->PickUpInstrument();
+
+		if (CurrentUsableInstrument != CurrentSelectableInstrument)
+			CurrentSelectableInstrument->PickUpInstrument();
+		
 		CurrentUsableInstrument = CurrentSelectableInstrument;
 		CurrentUsableInstrument->BaseMesh->SetVisibility(false);
 		CurrentUsableInstrument->HideEffects();
+		
 		
 		if (InstrumentOnBack != nullptr)
 		{
 			InstrumentOnBack->SetVisibility(true);
 		}
+
+		CurrentSelectableInstrument = nullptr;
 	}
 	else if (CurrentUsableInstrument != nullptr)
 	{
