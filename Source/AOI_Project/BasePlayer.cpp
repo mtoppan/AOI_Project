@@ -139,7 +139,9 @@ void ABasePlayer::UseOrSetInstrument()
 			//CurrentUsableInstrument->SetActorLocation(FVector(0, 0, -10000));
 		}
 		//CurrentUsableInstrument = nullptr;
-		CurrentSelectableInstrument->PickUpInstrument();
+		if (CurrentSelectableInstrument != CurrentUsableInstrument)
+			CurrentSelectableInstrument->PickUpInstrument();
+
 		CurrentUsableInstrument = CurrentSelectableInstrument;
 		CurrentUsableInstrument->BaseMesh->SetVisibility(false);
 		CurrentUsableInstrument->HideEffects();
@@ -148,6 +150,8 @@ void ABasePlayer::UseOrSetInstrument()
 		{
 			InstrumentOnBack->SetVisibility(true);
 		}
+
+		CurrentSelectableInstrument = nullptr;
 	}
 	else if (CurrentUsableInstrument != nullptr)
 	{
