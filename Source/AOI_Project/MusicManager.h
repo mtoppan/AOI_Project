@@ -20,6 +20,7 @@ class AOI_PROJECT_API AMusicManager : public AActor
 	GENERATED_BODY()
 
 	TArray<FString> BeatFunctionCalls;
+	TArray<FString> BeatFunctionCallsArea2;
 	int BeatOfMeasure;
 
 	int GraceAmount = 5;
@@ -31,6 +32,12 @@ class AOI_PROJECT_API AMusicManager : public AActor
 	void GracePeriodOnLoop();
 	UFUNCTION()
 	void GracePeriodOffLoop();
+
+	void StartSecondAreaMusic(FTimerHandle OldCountTimer, FTimerHandle OldGraceBeatOn, FTimerHandle OldGraceBeatOff);
+
+	FTimerHandle FirstCountTimer;
+	FTimerHandle FirstGraceBeatOnTimer;
+	FTimerHandle FirstGraceBeatOffTimer;
 	
 public:	
 	// Sets default values for this actor's properties
@@ -52,6 +59,8 @@ public:
 	UFUNCTION()
 	void FourthBeatFired();
 	UFUNCTION()
+	void FourthAndBeatFired();
+	UFUNCTION()
 	void FifthBeatFired();
 	UFUNCTION()
 	void SixthBeatFired();
@@ -59,9 +68,11 @@ public:
 	void SeventhBeatFired();
 	UFUNCTION()
 	void EighthBeatFired();
+	UFUNCTION()
+	void DummyBeatFired();
 
 	UFUNCTION(BlueprintCallable)
-	void StartSecondAreaMusic();
+	void CallSecondMusicTimers();
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void ResetRocks();
@@ -122,6 +133,8 @@ protected:
 
 	UFUNCTION(BlueprintCallable)
 	void CountBeat();
+	UFUNCTION()
+	void CountBeatSubdivisions();
 
 public:	
 	// Called every frame
