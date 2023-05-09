@@ -60,6 +60,9 @@ public:
 	UFUNCTION()
 	void EighthBeatFired();
 
+	UFUNCTION(BlueprintCallable)
+	void StartSecondAreaMusic();
+
 	UFUNCTION(BlueprintImplementableEvent)
 	void ResetRocks();
 	UFUNCTION(BlueprintImplementableEvent)
