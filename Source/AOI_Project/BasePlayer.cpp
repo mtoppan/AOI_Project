@@ -59,6 +59,17 @@ void ABasePlayer::BeginPlay()
 			Horn = Component;
 		}
 	}
+
+	TArray<USceneComponent*> SceneComps;
+	GetComponents<USceneComponent>(SceneComps);
+
+	for (USceneComponent* Component : SceneComps)
+	{
+		if (Component->ComponentHasTag("MeshHolder"))
+		{
+			PlayerMeshHolder = Component;
+		}
+	}
 }
 
 // Called every frame
@@ -70,60 +81,53 @@ void ABasePlayer::Tick(float DeltaTime)
 
 void ABasePlayer::MoveForward(float InputValue)
 {
-	if (Controller != NULL && InputValue != 0)
+	if (InputValue != 0)
 	{
-		const FRotator Rotation = Controller->GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
-		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::X);
+		FVector CameraForward = SpringArm->GetForwardVector();
+		FVector MovementDirection = CameraForward * InputValue;
+		MovementDirection.Normalize();
+		AddMovementInput(MovementDirection);
 
-		// add movement input
-		if (!Resetting)
-			AddMovementInput(Direction, InputValue);
-
+		FRotator PlayerRotation = Movement->Velocity.Rotation();
+		PlayerMeshHolder->SetWorldRotation(PlayerRotation);
 	}
-
-	//FVector CameraForward = SpringArm->GetForwardVector();
-	//FVector MovementDirection = CameraForward * InputValue;
-	//MovementDirection.Normalize();
-	//FVector MovementVelocity = MovementDirection *
 }
 
 void ABasePlayer::MoveRight(float InputValue)
 {
-	if (Controller != NULL && InputValue != 0)
+if (InputValue != 0)
 	{
-		const FRotator Rotation = Controller->GetControlRotation();
-		const FRotator YawRotation(0, Rotation.Yaw, 0);
-		const FVector Direction = FRotationMatrix(YawRotation).GetUnitAxis(EAxis::Y);
+		FVector CameraRight = SpringArm->GetRightVector();
+		FVector MovementDirection = CameraRight * InputValue;
+		MovementDirection.Normalize();
+		AddMovementInput(MovementDirection);
 
-		// add movement input
-		if (!Resetting)
-			AddMovementInput(Direction, InputValue);
-
+		FRotator PlayerRotation = Movement->Velocity.Rotation();
+		PlayerMeshHolder->SetWorldRotation(PlayerRotation);
 	}
 }
 
 void ABasePlayer::CameraLookUp(float InputValue)
 {
-	AddControllerPitchInput(InputValue * CameraLookUpRate);
+	//AddControllerPitchInput(InputValue * CameraLookUpRate);
 
-	/*if (InputValue != 0)
+	if (InputValue != 0)
 	{
 		FVector CameraOffset = SpringArm->GetRelativeTransform().GetLocation();
 		FRotator SpringArmRotation = SpringArm->GetComponentRotation();
-		SpringArmRotation.Pitch += InputValue;
+		SpringArmRotation.Pitch -= InputValue;
 		SpringArmRotation.Pitch = FMath::ClampAngle(SpringArmRotation.Pitch, -89, 89);
 		CameraOffset = SpringArmRotation.RotateVector(CameraOffset);
 		SpringArm->SetRelativeLocation(CameraOffset);
 		SpringArm->SetWorldRotation(SpringArmRotation);
-	}*/
+	}
 }
 
 void ABasePlayer::CameraLookRight(float InputValue)
 {
-	AddControllerYawInput(InputValue * CameraTurnRate);
+	//AddControllerYawInput(InputValue * CameraTurnRate);
 
-	/*if (InputValue != 0)
+	if (InputValue != 0)
 	{
 		FVector CameraOffset = SpringArm->GetRelativeTransform().GetLocation();
 		FRotator SpringArmRotation = SpringArm->GetComponentRotation();
@@ -131,7 +135,7 @@ void ABasePlayer::CameraLookRight(float InputValue)
 		CameraOffset = SpringArmRotation.RotateVector(CameraOffset);
 		SpringArm->SetRelativeLocation(CameraOffset);
 		SpringArm->SetWorldRotation(SpringArmRotation);
-	}*/
+	}
 }
 
 void ABasePlayer::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
