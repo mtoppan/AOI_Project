@@ -81,6 +81,11 @@ void ABasePlayer::MoveForward(float InputValue)
 			AddMovementInput(Direction, InputValue);
 
 	}
+
+	//FVector CameraForward = SpringArm->GetForwardVector();
+	//FVector MovementDirection = CameraForward * InputValue;
+	//MovementDirection.Normalize();
+	//FVector MovementVelocity = MovementDirection *
 }
 
 void ABasePlayer::MoveRight(float InputValue)
@@ -101,11 +106,32 @@ void ABasePlayer::MoveRight(float InputValue)
 void ABasePlayer::CameraLookUp(float InputValue)
 {
 	AddControllerPitchInput(InputValue * CameraLookUpRate);
+
+	/*if (InputValue != 0)
+	{
+		FVector CameraOffset = SpringArm->GetRelativeTransform().GetLocation();
+		FRotator SpringArmRotation = SpringArm->GetComponentRotation();
+		SpringArmRotation.Pitch += InputValue;
+		SpringArmRotation.Pitch = FMath::ClampAngle(SpringArmRotation.Pitch, -89, 89);
+		CameraOffset = SpringArmRotation.RotateVector(CameraOffset);
+		SpringArm->SetRelativeLocation(CameraOffset);
+		SpringArm->SetWorldRotation(SpringArmRotation);
+	}*/
 }
 
 void ABasePlayer::CameraLookRight(float InputValue)
 {
 	AddControllerYawInput(InputValue * CameraTurnRate);
+
+	/*if (InputValue != 0)
+	{
+		FVector CameraOffset = SpringArm->GetRelativeTransform().GetLocation();
+		FRotator SpringArmRotation = SpringArm->GetComponentRotation();
+		SpringArmRotation.Yaw += InputValue;
+		CameraOffset = SpringArmRotation.RotateVector(CameraOffset);
+		SpringArm->SetRelativeLocation(CameraOffset);
+		SpringArm->SetWorldRotation(SpringArmRotation);
+	}*/
 }
 
 void ABasePlayer::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
