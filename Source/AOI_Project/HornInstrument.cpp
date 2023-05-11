@@ -50,7 +50,8 @@ void AHornInstrument::UseInstrument()
 		ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
 		PlayHornSound();
 		Jump();
-		
+		JumpAnimation();
+
 		Playing = true;
 		FTimerDelegate TimerDelegate;
 		FTimerHandle TimerHandle;
