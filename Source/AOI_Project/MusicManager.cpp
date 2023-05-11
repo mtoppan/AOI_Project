@@ -67,7 +67,7 @@ void AMusicManager::BeginPlay()
 	FTimerDelegate CounterTimerDelegate;
 
 	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
-	GetWorld()->GetTimerManager().SetTimer(FirstCountTimer, CounterTimerDelegate, 120 / CurrentBPM, true);
+	GetWorld()->GetTimerManager().SetTimer(FirstCountTimer, CounterTimerDelegate, 60 / CurrentBPM, true);
 	
 	
 	// Timer that triggers calls for the start of the beat grace period
@@ -144,7 +144,7 @@ void AMusicManager::CountBeat()
 	FString BeatCallToFire = BeatFunctionCalls[BeatOfMeasure - 1];
 
 	BeatTimerDelegate.BindUFunction(this, FName(BeatFunctionCalls[BeatOfMeasure - 1]));
-	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 120 / CurrentBPM, false);
+	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
 
 	BeatOfMeasure = (BeatOfMeasure  % 8) + 1;
 }
@@ -210,7 +210,7 @@ void AMusicManager::DownBeatFired()
 
 void AMusicManager::SecondBeatFired()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("2"));
+	UE_LOG(LogTemp, Warning, TEXT("2"));
 	PulseRock();
 }
 
@@ -221,24 +221,24 @@ void AMusicManager::ThirdBeatFired()
 
 void AMusicManager::FourthBeatFired()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("4"));
+	UE_LOG(LogTemp, Warning, TEXT("4"));
 	PulseRock();
 	ResetRocks();
 }
 
 void AMusicManager::FourthAndBeatFired()
 {
-	UE_LOG(LogTemp, Warning, TEXT("4.5"));
+	//UE_LOG(LogTemp, Warning, TEXT("4.5"));
 }
 
 void AMusicManager::FifthBeatFired()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("5"));
+	UE_LOG(LogTemp, Warning, TEXT("5"));
 	TriggerLightsLowerIntensity();
 }
 void AMusicManager::SixthBeatFired()
 {
-	//UE_LOG(LogTemp, Warning, TEXT("6"));
+	UE_LOG(LogTemp, Warning, TEXT("6"));
 	PulseRock();
 }
 void AMusicManager::SeventhBeatFired()
