@@ -60,6 +60,9 @@ public:
 	void ShowMusicClef();
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Sound")
 	bool AddedTrack = false;
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void JumpAnimation();
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Collision Parameters")
 	bool Playing;

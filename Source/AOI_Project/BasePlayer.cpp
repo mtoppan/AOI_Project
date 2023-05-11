@@ -89,6 +89,8 @@ void ABasePlayer::MoveForward(float InputValue)
 		AddMovementInput(MovementDirection);
 
 		FRotator PlayerRotation = Movement->Velocity.Rotation();
+		PlayerRotation.Pitch = 0;
+		PlayerRotation.Roll = 0;
 		PlayerMeshHolder->SetWorldRotation(PlayerRotation);
 	}
 }
@@ -103,6 +105,8 @@ if (InputValue != 0)
 		AddMovementInput(MovementDirection);
 
 		FRotator PlayerRotation = Movement->Velocity.Rotation();
+		PlayerRotation.Pitch = 0;
+		PlayerRotation.Roll = 0;
 		PlayerMeshHolder->SetWorldRotation(PlayerRotation);
 	}
 }
