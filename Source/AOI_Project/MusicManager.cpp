@@ -67,7 +67,7 @@ void AMusicManager::BeginPlay()
 	FTimerDelegate CounterTimerDelegate;
 
 	CounterTimerDelegate.BindUFunction(this, FName("CountBeat"));
-	GetWorld()->GetTimerManager().SetTimer(FirstCountTimer, CounterTimerDelegate, 60 / CurrentBPM, true);
+	GetWorld()->GetTimerManager().SetTimer(FirstCountTimer, CounterTimerDelegate, 120 / CurrentBPM, true);
 	
 	
 	// Timer that triggers calls for the start of the beat grace period
@@ -75,14 +75,14 @@ void AMusicManager::BeginPlay()
 	FTimerHandle GraceOnTimerHandle;
 
 	GraceOnTimerDelegate.BindUFunction(this, FName("BeatGracePeriodOn"));
-	GetWorld()->GetTimerManager().SetTimer(GraceOnTimerHandle, GraceOnTimerDelegate, (60 - (CurrentBPM / GraceAmount)) / CurrentBPM, false);
+	GetWorld()->GetTimerManager().SetTimer(GraceOnTimerHandle, GraceOnTimerDelegate, (120 - (CurrentBPM / GraceAmount)) / CurrentBPM, false);
 
 	// Timer that triggers calls for the end of the beat grace period
 	FTimerDelegate GraceOffTimerDelegate;
 	FTimerHandle GraceOffTimerHandle;
 
 	GraceOffTimerDelegate.BindUFunction(this, FName("BeatGracePeriodOff"));
-	GetWorld()->GetTimerManager().SetTimer(GraceOffTimerHandle, GraceOffTimerDelegate, (60 + (CurrentBPM / GraceAmount)) / CurrentBPM, false);
+	GetWorld()->GetTimerManager().SetTimer(GraceOffTimerHandle, GraceOffTimerDelegate, (120 + (CurrentBPM / GraceAmount)) / CurrentBPM, false);
 
 	FTimerDelegate FirstSpawnTimerDelegate;
 	FTimerHandle FirstSpawnTimerHandle;
@@ -103,7 +103,7 @@ void AMusicManager::StartSecondAreaMusic(FTimerHandle OldCountTimer, FTimerHandl
 	GetWorldTimerManager().ClearTimer(OldGraceBeatOff);
 
 	CurrentBPM = 140;
-	//GraceAmount = 20;
+	GraceAmount = 5;
 	BeatOfMeasure = 1;
 
 	// Timer for calling each beat 
@@ -111,7 +111,7 @@ void AMusicManager::StartSecondAreaMusic(FTimerHandle OldCountTimer, FTimerHandl
 	FTimerDelegate CounterTimerDelegate;
 	FTimerHandle CounterTimerHandle;
 	CounterTimerDelegate.BindUFunction(this, FName("CountBeatSubdivisions"));
-	GetWorld()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 30 / CurrentBPM, true);
+	GetWorld()->GetTimerManager().SetTimer(CounterTimerHandle, CounterTimerDelegate, 120 / CurrentBPM, true);
 	
 	
 	// Timer that triggers calls for the start of the beat grace period
@@ -119,14 +119,14 @@ void AMusicManager::StartSecondAreaMusic(FTimerHandle OldCountTimer, FTimerHandl
 	FTimerHandle GraceOnTimerHandle;
 	
 	GraceOnTimerDelegate.BindUFunction(this, FName("BeatGracePeriodOn"));
-	GetWorld()->GetTimerManager().SetTimer(GraceOnTimerHandle, GraceOnTimerDelegate, (15 - (CurrentBPM / GraceAmount)) / CurrentBPM, false);
+	GetWorld()->GetTimerManager().SetTimer(GraceOnTimerHandle, GraceOnTimerDelegate, (120 - (CurrentBPM / GraceAmount)) / CurrentBPM, false);
 
 	// Timer that triggers calls for the end of the beat grace period
 	FTimerDelegate GraceOffTimerDelegate;
 	FTimerHandle GraceOffTimerHandle;
 	
 	GraceOffTimerDelegate.BindUFunction(this, FName("BeatGracePeriodOff"));
-	GetWorld()->GetTimerManager().SetTimer(GraceOffTimerHandle, GraceOffTimerDelegate, (15 + (CurrentBPM / GraceAmount)) / CurrentBPM, false);
+	GetWorld()->GetTimerManager().SetTimer(GraceOffTimerHandle, GraceOffTimerDelegate, (120 + (CurrentBPM / GraceAmount)) / CurrentBPM, false);
 
 }
 
@@ -144,7 +144,7 @@ void AMusicManager::CountBeat()
 	FString BeatCallToFire = BeatFunctionCalls[BeatOfMeasure - 1];
 
 	BeatTimerDelegate.BindUFunction(this, FName(BeatFunctionCalls[BeatOfMeasure - 1]));
-	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
+	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 120 / CurrentBPM, false);
 
 	BeatOfMeasure = (BeatOfMeasure  % 8) + 1;
 }
@@ -156,7 +156,7 @@ void AMusicManager::CountBeatSubdivisions()
 	FTimerHandle BeatTimerHandle;
 
 	BeatTimerDelegate.BindUFunction(this, FName(BeatFunctionCallsArea2[BeatOfMeasure - 1]));
-	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 30 / CurrentBPM, false);
+	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 120 / CurrentBPM, false);
 
 	BeatOfMeasure = (BeatOfMeasure  % 16) + 1;
 }
@@ -168,7 +168,7 @@ void AMusicManager::BeatGracePeriodOn()
 	FTimerDelegate GraceOnTimerDelegate;
 	
 	GraceOnTimerDelegate.BindUFunction(this, FName("GracePeriodOnLoop"));
-	GetWorld()->GetTimerManager().SetTimer(FirstGraceBeatOnTimer, GraceOnTimerDelegate, 60 / CurrentBPM, true);
+	GetWorld()->GetTimerManager().SetTimer(FirstGraceBeatOnTimer, GraceOnTimerDelegate, 120 / CurrentBPM, true);
 }
 
 void AMusicManager::BeatGracePeriodOff()
@@ -178,7 +178,7 @@ void AMusicManager::BeatGracePeriodOff()
 	FTimerDelegate GraceOffTimerDelegate;
 	
 	GraceOffTimerDelegate.BindUFunction(this, FName("GracePeriodOffLoop"));
-	GetWorld()->GetTimerManager().SetTimer(FirstGraceBeatOffTimer, GraceOffTimerDelegate, 60 / CurrentBPM, true);
+	GetWorld()->GetTimerManager().SetTimer(FirstGraceBeatOffTimer, GraceOffTimerDelegate, 120 / CurrentBPM, true);
 }
 
 void AMusicManager::GracePeriodOnLoop()
