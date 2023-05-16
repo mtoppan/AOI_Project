@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "MusicManager.h"
 #include "Collectable.generated.h"
 
 UCLASS()
@@ -19,6 +20,9 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	
+	UPROPERTY()
+	AMusicManager* MusicManager;
 
 	UPROPERTY()
 	AActor* Player;
@@ -26,6 +30,7 @@ protected:
 	class UCharacterMovementComponent* Movement;
 
 	FVector StartingLocation;
+	bool CanUseInstrument = true;
 
 public:	
 	// Called every frame
@@ -33,6 +38,10 @@ public:
 	virtual void UseInstrument();
 	virtual void PickUpInstrument();
 	virtual void ResetInstrument();
+	
+	virtual void OffBeatPenalty();
+	UFUNCTION()
+	void PenaltyOver();
 
 	UPROPERTY(EditAnywhere, Category = "Root")
 	class USceneComponent* Root;

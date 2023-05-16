@@ -5,16 +5,13 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Collectable.h"
-#include "MusicManager.h"
 #include "PercussionInstrument.generated.h"
 
 UCLASS()
 class AOI_PROJECT_API APercussionInstrument : public ACollectable
 {
 	GENERATED_BODY()
-
-	UPROPERTY()
-	AMusicManager* MusicManager;
+	
 	//UPROPERTY(EditAnywhere, Category = "Collision")
 	//class UStaticMeshComponent* CollisionVisual;
 

@@ -21,6 +21,7 @@ void ACollectable::BeginPlay()
 	//cant do this without #include - circular dependency
 	Player = UGameplayStatics::GetActorOfClass(GetWorld(), ABasePlayer::StaticClass());
 	Movement = Cast<UCharacterMovementComponent>(Player->GetComponentByClass(UCharacterMovementComponent::StaticClass()));
+	MusicManager = (AMusicManager*)UGameplayStatics::GetActorOfClass(GetWorld(), AMusicManager::StaticClass());
 }
 
 // create a child script where you can make this more specific, like editing player movement to add a jump
@@ -35,6 +36,26 @@ void ACollectable::PickUpInstrument()
 void ACollectable::ResetInstrument()
 {
 }
+
+void ACollectable::OffBeatPenalty()
+{
+	// temporarily fade away the UI, or otherwise make it clear the player cannot use the instrument
+	// disable player from using instrument
+
+	CanUseInstrument = false;
+	int BPM = MusicManager->CurrentBPM;
+
+	FTimerHandle PenaltyHandle;
+	GetWorld()->GetTimerManager().SetTimer(PenaltyHandle, this, &ACollectable::PenaltyOver, (120.0 / BPM) * 2, false);
+	
+}
+
+void ACollectable::PenaltyOver()
+{
+	CanUseInstrument = true;
+	UE_LOG(LogTemp, Log, TEXT("can play"));
+}
+
 
 
 // Called every frame

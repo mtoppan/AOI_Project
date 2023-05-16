@@ -5,17 +5,12 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Collectable.h"
-#include "MusicManager.h"
 #include "HornInstrument.generated.h"
 
 UCLASS()
 class AOI_PROJECT_API AHornInstrument : public ACollectable
 {
 	GENERATED_BODY()
-
-	UPROPERTY()
-	
-	AMusicManager* MusicManager;
 	
 	UPROPERTY()
 	USoundBase* PickUpHornSound;

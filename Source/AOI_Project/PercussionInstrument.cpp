@@ -27,7 +27,6 @@ void APercussionInstrument::BeginPlay()
 {
 	Super::BeginPlay();
 	StartingLocation = GetActorLocation();
-	MusicManager = (AMusicManager*)UGameplayStatics::GetActorOfClass(GetWorld(), AMusicManager::StaticClass());
 
 	const FString Path = FString::Printf(TEXT("/Game/Sounds/SFX/getDrum"));
 	PickUpDrumSound = Cast<USoundBase>(StaticLoadObject(USoundBase::StaticClass(), nullptr,*Path));
@@ -44,7 +43,7 @@ void APercussionInstrument::UseInstrument()
 {
 	// turn visuals on and trigger collision check
 	//CollisionVisual->ToggleVisibility();
-	if (/*!CooldownActive && */MusicManager->OnBeat)
+	if (/*!CooldownActive && */MusicManager->OnBeat && CanUseInstrument)
 	{
 		ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
 		BasePlayer->Invincible = true;
@@ -74,8 +73,9 @@ void APercussionInstrument::UseInstrument()
 		//CooldownDelegate.BindUFunction(this, FName("CoolDownEnd"));
 		//GetGameInstance()->GetTimerManager().SetTimer(CooldownHandle, CooldownDelegate, 3, false);
 	}
-	else if (!MusicManager->OnBeat)
+	else if (!MusicManager->OnBeat && CanUseInstrument)
 	{
+		OffBeatPenalty();
 		PlayWeakerDrumEffects();
 	}
 }

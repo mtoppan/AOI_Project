@@ -147,6 +147,8 @@ void AMusicManager::CountBeat()
 	GetWorld()->GetTimerManager().SetTimer(BeatTimerHandle, BeatTimerDelegate, 60 / CurrentBPM, false);
 
 	BeatOfMeasure = (BeatOfMeasure  % 8) + 1;
+
+	TotalBeatsPlayed += 1;
 }
 
 void AMusicManager::CountBeatSubdivisions()
