@@ -204,7 +204,7 @@ void ABasePlayer::UseOrSetInstrument()
 void ABasePlayer::LoseInstrument()
 {
 	if (CurrentUsableInstrument != nullptr)
-		UGameplayStatics::PlaySound2D(GetWorld(), LoseInstrumentSound, 1, 1, 0, nullptr, nullptr);
+		UGameplayStatics::PlaySound2D(GetWorld(), LoseInstrumentSound, 0.45, 1, 0, nullptr, nullptr);
 	
 	FTimerDelegate InstrumentDelegate;
 	FTimerHandle InstrumentHandle;
