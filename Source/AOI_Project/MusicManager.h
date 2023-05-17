@@ -126,6 +126,9 @@ public:
 
 	void SetUpSpawning();
 
+	UFUNCTION(BlueprintCallable)
+	void BeginGame();
+
 
 protected:
 	// Called when the game starts or when spawned

@@ -62,7 +62,11 @@ void AMusicManager::BeginPlay()
 	// Function calls moved to BP
 	//DownBeatFired();
 	//CountBeat();
+}
 
+void AMusicManager::BeginGame()
+{
+	
 	// Timer for calling each beat 
 	FTimerDelegate CounterTimerDelegate;
 
@@ -94,6 +98,7 @@ void AMusicManager::BeginPlay()
 	SecondSpawnTimerDelegate.BindUFunction(this, FName("SpawnFirstRocksSecondSet"));
 	GetWorld()->GetTimerManager().SetTimer(SecondSpawnTimerHandle, SecondSpawnTimerDelegate, 60 * 7 / CurrentBPM, false);
 }
+
 
 void AMusicManager::StartSecondAreaMusic(FTimerHandle OldCountTimer, FTimerHandle OldGraceBeatOn, FTimerHandle OldGraceBeatOff)
 {
