@@ -17,8 +17,6 @@ class AOI_PROJECT_API AGate : public AActor
 	void EndGame();
 	UFUNCTION()
 	void OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
-
-	// make other blueprint implementable functions to be put within OpenGate(), EndGame() - both are called within Gate.cpp
 	
 public:	
 	// Sets default values for this actor's properties
@@ -26,6 +24,10 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	void UpdateFlowersComplete();
+	UFUNCTION(BlueprintImplementableEvent)
+	void UpdateFlowerEffects();
+	UFUNCTION(BlueprintImplementableEvent)
+	void FinalFlowerEffects();
 
 protected:
 	// Called when the game starts or when spawned
