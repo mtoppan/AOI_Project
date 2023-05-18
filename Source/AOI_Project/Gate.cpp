@@ -19,7 +19,7 @@ void AGate::BeginPlay()
 
 void AGate::OpenGate()
 {
-	// animation
+	// animation -> communicate with anim BP
 	// sfx
 	// disable collider
 }
@@ -27,9 +27,24 @@ void AGate::OpenGate()
 // called by particles when spline is finished (reached gate)
 void AGate::UpdateFlowersComplete()
 {
+
+	/*
+	 * UPDATE FLOWER EFFECTS SHOULD
+	 * play sfx
+	 * play niagara at the specified location (where most recent spline went)
+	 */
+	UpdateFlowerEffects();
+	
 	FlowersComplete++;
 	if (FlowersComplete == 3)
 	{
+		/*
+		 * FINAL FLOWER EFFECTS SHOULD
+		 * play sfx
+		 * play final niagara and present visual change
+		 */
+		FinalFlowerEffects();
+		
 		// wait for player to get close to gate
 		GateUnlocked = true;
 	}
@@ -43,6 +58,7 @@ void AGate::EndGame()
 void AGate::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp,
 	int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
+	// open the gate when all particles have been collected and the the player gets close to the gate
 	if (OtherActor != nullptr && OtherActor->ActorHasTag(FName("Player")) && GateUnlocked && !GateOpened)
 	{
 		OpenGate();
