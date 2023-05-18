@@ -40,7 +40,7 @@ AMusicManager::AMusicManager()
 
 	CurrentBPM = 100;
 	// 10 is equivalent to .1 seconds before and after beat (i.e. total grace period of .2 seconds)
-	GraceAmount = 10;
+	GraceAmount = 5;
 	BeatOfMeasure = 3;
 }
 
@@ -62,7 +62,11 @@ void AMusicManager::BeginPlay()
 	// Function calls moved to BP
 	//DownBeatFired();
 	//CountBeat();
+}
 
+void AMusicManager::BeginGame()
+{
+	
 	// Timer for calling each beat 
 	FTimerDelegate CounterTimerDelegate;
 
@@ -94,6 +98,7 @@ void AMusicManager::BeginPlay()
 	SecondSpawnTimerDelegate.BindUFunction(this, FName("SpawnFirstRocksSecondSet"));
 	GetWorld()->GetTimerManager().SetTimer(SecondSpawnTimerHandle, SecondSpawnTimerDelegate, 60 * 7 / CurrentBPM, false);
 }
+
 
 void AMusicManager::StartSecondAreaMusic(FTimerHandle OldCountTimer, FTimerHandle OldGraceBeatOn, FTimerHandle OldGraceBeatOff)
 {

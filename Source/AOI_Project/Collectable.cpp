@@ -46,7 +46,7 @@ void ACollectable::OffBeatPenalty()
 	int BPM = MusicManager->CurrentBPM;
 
 	FTimerHandle PenaltyHandle;
-	GetWorld()->GetTimerManager().SetTimer(PenaltyHandle, this, &ACollectable::PenaltyOver, (120.0 / BPM) * 2, false);
+	GetWorld()->GetTimerManager().SetTimer(PenaltyHandle, this, &ACollectable::PenaltyOver, (120.0 / BPM) * 1.5f, false);
 	
 }
 
