@@ -40,7 +40,7 @@ AMusicManager::AMusicManager()
 
 	CurrentBPM = 100;
 	// 10 is equivalent to .1 seconds before and after beat (i.e. total grace period of .2 seconds)
-	GraceAmount = 10;
+	GraceAmount = 7;
 	BeatOfMeasure = 3;
 }
 
