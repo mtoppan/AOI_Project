@@ -48,20 +48,24 @@ void AHornInstrument::UseInstrument()
 	if (MusicManager->OnBeat && CanUseInstrument)
 	{
 		ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
+		
 		PlayHornSound();
-		Jump();
-		JumpAnimation();
+		
+		if (BasePlayer->Grounded)
+		{
+			Jump();
+			JumpAnimation();
 
-		Playing = true;
-		FTimerDelegate TimerDelegate;
-		FTimerHandle TimerHandle;
+			Playing = true;
+			FTimerDelegate TimerDelegate;
+			FTimerHandle TimerHandle;
 
-		if (!AddedTrack)
-			ShowMusicClef();
+			if (!AddedTrack)
+				ShowMusicClef();
 
-		TimerDelegate.BindUFunction(this, FName("EndHorn"));
-		GetGameInstance()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 120 / MusicManager->CurrentBPM, false);
-
+			TimerDelegate.BindUFunction(this, FName("EndHorn"));
+			GetGameInstance()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 120 / MusicManager->CurrentBPM, false);
+		}
 		//CooldownActive = true;
 	
 		//FTimerDelegate CooldownDelegate;
