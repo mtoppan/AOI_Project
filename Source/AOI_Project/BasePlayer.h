@@ -67,6 +67,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Invincible")
 	bool Invincible;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool Grounded;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
