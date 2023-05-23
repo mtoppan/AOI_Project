@@ -213,6 +213,7 @@ void AMusicManager::DownBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("1"));
 	TriggerLights();
+	PulseWater();
 }
 
 void AMusicManager::SecondBeatFired()
@@ -224,6 +225,7 @@ void AMusicManager::SecondBeatFired()
 void AMusicManager::ThirdBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("3"));
+	PulseWater();
 }
 
 void AMusicManager::FourthBeatFired()
@@ -242,6 +244,7 @@ void AMusicManager::FifthBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("5"));
 	TriggerLightsLowerIntensity();
+	PulseWater();
 }
 void AMusicManager::SixthBeatFired()
 {
@@ -251,6 +254,7 @@ void AMusicManager::SixthBeatFired()
 void AMusicManager::SeventhBeatFired()
 {
 	UE_LOG(LogTemp, Warning, TEXT("7"));
+	PulseWater();
 }
 
 void AMusicManager::EighthBeatFired()
