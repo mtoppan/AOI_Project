@@ -26,6 +26,7 @@ void AEnding::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActor* O
 	{
 		ABasePlayer* Player = Cast<ABasePlayer>(OtherActor);
 		Player->CanMove = false;
+		FinalMusicandUI();
 	}
 }
 

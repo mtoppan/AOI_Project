@@ -14,7 +14,8 @@ AGate::AGate()
 void AGate::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	Sphere = Cast<USphereComponent>(GetComponentByClass(USphereComponent::StaticClass()));
+	Sphere->OnComponentBeginOverlap.AddDynamic(this, &AGate::OnOverlapBegin);
 }
 
 void AGate::OpenGate()
@@ -22,6 +23,8 @@ void AGate::OpenGate()
 	// animation -> communicate with anim BP
 	// sfx
 	// disable collider
+
+	GateAnimationAndEffects();
 }
 
 // called by particles when spline is finished (reached gate)
