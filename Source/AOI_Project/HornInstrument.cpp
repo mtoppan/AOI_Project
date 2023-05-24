@@ -49,12 +49,12 @@ void AHornInstrument::UseInstrument()
 	{
 		ABasePlayer* BasePlayer = Cast<ABasePlayer>(Player);
 		
-		PlayHornSound();
 		
 		if (BasePlayer->Grounded)
 		{
 			Jump();
 			JumpAnimation();
+			PlayHornSound();
 
 			Playing = true;
 			FTimerDelegate TimerDelegate;
@@ -65,6 +65,10 @@ void AHornInstrument::UseInstrument()
 
 			TimerDelegate.BindUFunction(this, FName("EndHorn"));
 			GetGameInstance()->GetTimerManager().SetTimer(TimerHandle, TimerDelegate, 120 / MusicManager->CurrentBPM, false);
+		}
+		else
+		{
+			PlayWeakerHornSound();
 		}
 		//CooldownActive = true;
 	

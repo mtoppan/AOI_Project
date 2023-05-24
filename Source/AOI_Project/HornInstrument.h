@@ -44,6 +44,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void PlayHornSound();
 	UFUNCTION(BlueprintImplementableEvent)
+	void PlayWeakerHornSound();
+	UFUNCTION(BlueprintImplementableEvent)
 	void PlayWeakerHornEffects();
 	UFUNCTION(BlueprintImplementableEvent)
 	void AddHornTrack();

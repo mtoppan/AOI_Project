@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Components/SphereComponent.h"
 #include "GameFramework/Actor.h"
 #include "Gate.generated.h"
 
@@ -12,6 +13,10 @@ class AOI_PROJECT_API AGate : public AActor
 	GENERATED_BODY()
 
 	int FlowersComplete = 0;
+	
+	UPROPERTY()
+	USphereComponent* Sphere;
+	
 	bool GateUnlocked, GateOpened;
 	void OpenGate();
 	void EndGame();
@@ -28,6 +33,9 @@ public:
 	void UpdateFlowerEffects();
 	UFUNCTION(BlueprintImplementableEvent)
 	void FinalFlowerEffects();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void GateAnimationAndEffects();
 
 protected:
 	// Called when the game starts or when spawned
