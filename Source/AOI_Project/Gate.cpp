@@ -16,6 +16,7 @@ void AGate::BeginPlay()
 	Super::BeginPlay();
 	Sphere = Cast<USphereComponent>(GetComponentByClass(USphereComponent::StaticClass()));
 	Sphere->OnComponentBeginOverlap.AddDynamic(this, &AGate::OnOverlapBegin);
+	FlowersComplete = 0;
 }
 
 void AGate::OpenGate()
