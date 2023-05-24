@@ -81,7 +81,7 @@ void ABasePlayer::Tick(float DeltaTime)
 
 void ABasePlayer::MoveForward(float InputValue)
 {
-	if (InputValue != 0)
+	if (InputValue != 0 && CanMove)
 	{
 		FVector CameraForward = SpringArm->GetForwardVector();
 		FVector MovementDirection = CameraForward * InputValue;
@@ -97,7 +97,7 @@ void ABasePlayer::MoveForward(float InputValue)
 
 void ABasePlayer::MoveRight(float InputValue)
 {
-if (InputValue != 0)
+if (InputValue != 0 && CanMove)
 	{
 		FVector CameraRight = SpringArm->GetRightVector();
 		FVector MovementDirection = CameraRight * InputValue;
@@ -147,6 +147,7 @@ void ABasePlayer::OnOverlapBegin(UPrimitiveComponent* OverlappedComponent, AActo
 	if (OtherActor != nullptr && OtherActor->ActorHasTag("Instrument"))
 	{
 		CurrentSelectableInstrument = (ACollectable*)OtherActor;
+		UE_LOG(LogTemp,Log,TEXT("entered"));
 	}
 }
 

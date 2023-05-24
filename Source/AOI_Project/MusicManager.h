@@ -103,6 +103,8 @@ public:
 	UFUNCTION(BlueprintImplementableEvent)
 	void PulseRock();
 	UFUNCTION(BlueprintImplementableEvent)
+	void PulseWater();
+	UFUNCTION(BlueprintImplementableEvent)
 	void CrystalsPulse();
 
 	UFUNCTION(BlueprintImplementableEvent)
