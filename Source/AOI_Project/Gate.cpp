@@ -37,9 +37,9 @@ void AGate::UpdateFlowersComplete()
 	 * play sfx
 	 * play niagara at the specified location (where most recent spline went)
 	 */
+	FlowersComplete++;
 	UpdateFlowerEffects();
 	
-	FlowersComplete++;
 	if (FlowersComplete == 3)
 	{
 		/*

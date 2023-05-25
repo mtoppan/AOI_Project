@@ -11,8 +11,7 @@ UCLASS()
 class AOI_PROJECT_API AGate : public AActor
 {
 	GENERATED_BODY()
-
-	int FlowersComplete = 0;
+	
 	
 	UPROPERTY()
 	USphereComponent* Sphere;
@@ -41,8 +40,13 @@ protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	int FlowersComplete = 0;
+
+
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+	
 
 };
