@@ -43,6 +43,9 @@ public:
 	// Sets default values for this character's properties
 	ABasePlayer();
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	bool GotDrum;
+	
 	UPROPERTY()
 	class UCharacterMovementComponent* Movement;
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Instruments on Back")

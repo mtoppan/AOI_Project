@@ -175,7 +175,10 @@ void ABasePlayer::UseOrSetInstrument()
 		}
 		//CurrentUsableInstrument = nullptr;
 		if (CurrentSelectableInstrument != CurrentUsableInstrument)
+		{
+			GotDrum = true;
 			CurrentSelectableInstrument->PickUpInstrument();
+		}
 
 		CurrentUsableInstrument = CurrentSelectableInstrument;
 		CurrentUsableInstrument->BaseMesh->SetVisibility(false);
