@@ -6,24 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="197ca23f-161f-4dce-992f-785daaf41044" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/UI/Diana_Xu__1_.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/UI/FIN__1_.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/UI/Jasper_Tucker__1_.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/UI/Macy_Toppan__1_.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/UI/PressSpaceToBegin.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/UI/PressSpace__1_.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/UI/headphones__1_.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Vine.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/BP_Ending.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/BP_Ending.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/FinalUI.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/FinalUI.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Animations/vineAnimBP.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Animations/vineAnimBP.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_HornInstrument.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_HornInstrument.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/BP_Flower.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/BP_Flower.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/BP_Gate.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/BP_Gate.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_MusicManager.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_MusicManager.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_PercussionInstrument.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Widget_HUD.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Widget_HUD.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/World.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/World.umap" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Diana_Xu.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/FIN.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Jasper_Tucker.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/Macy_Toppan.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/UI/headphones.uasset" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
