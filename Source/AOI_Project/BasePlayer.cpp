@@ -168,12 +168,9 @@ void ABasePlayer::UseOrSetInstrument()
 		if (CurrentUsableInstrument != nullptr)
 		{
 			// disregard
-			//CurrentUsableInstrument->Destroy();
 			InstrumentOnBack->SetVisibility(false);
-			//CurrentUsableInstrument = nullptr;
-			//CurrentUsableInstrument->SetActorLocation(FVector(0, 0, -10000));
 		}
-		//CurrentUsableInstrument = nullptr;
+
 		if (CurrentSelectableInstrument != CurrentUsableInstrument)
 		{
 			GotDrum = true;
