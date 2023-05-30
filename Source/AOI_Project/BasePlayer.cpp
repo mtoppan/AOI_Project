@@ -163,7 +163,7 @@ void ABasePlayer::UseOrSetInstrument()
 {
 
 	// if player is able to pick up an instrument, prioritize picking it up
-	if (CurrentSelectableInstrument != nullptr)
+	if (CurrentSelectableInstrument != nullptr && CurrentSelectableInstrument != CurrentUsableInstrument)
 	{
 		if (CurrentUsableInstrument != nullptr)
 		{
