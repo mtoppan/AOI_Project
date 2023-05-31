@@ -86,7 +86,7 @@ void APercussionInstrument::PickUpInstrument()
 	BasePlayer->InstrumentOnBack = BasePlayer->Drum;
 	
 	AttachToActor(BasePlayer, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-	UGameplayStatics::PlaySound2D(GetWorld(), PickUpDrumSound, 1, 1, 0, nullptr, nullptr);
+	//UGameplayStatics::PlaySound2D(GetWorld(), PickUpDrumSound, 1, 1, 0, nullptr, nullptr);
 
 	if (!FirstTimePickUp)
 	{

@@ -1,0 +1,2 @@
+Windows/AOI_Project/Content/AOI_Project-Windows.ucas filter=lfs diff=lfs merge=lfs -text
+*.ucas filter=lfs diff=lfs merge=lfs -text

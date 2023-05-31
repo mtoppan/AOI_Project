@@ -91,7 +91,7 @@ void AHornInstrument::PickUpInstrument()
 	BasePlayer->InstrumentOnBack = BasePlayer->Horn;
 	
 	AttachToActor(BasePlayer, FAttachmentTransformRules::SnapToTargetNotIncludingScale);
-	UGameplayStatics::PlaySound2D(GetWorld(), PickUpHornSound, 1, 1, 0, nullptr, nullptr);
+	//UGameplayStatics::PlaySound2D(GetWorld(), PickUpHornSound, 1, 1, 0, nullptr, nullptr);
 	
 	if (!FirstTimePickUp)
 	{

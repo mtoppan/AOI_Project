@@ -6,10 +6,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="197ca23f-161f-4dce-992f-785daaf41044" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/AOI_Project.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AOI_Project/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/BP_AnimatedTreeParent.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/BP_Level2/BP_AnimatedTreeParent.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGame.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGame.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Maps/World.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Maps/World.umap" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/BasePlayer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/HornInstrument.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/HornInstrument.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/MusicManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/AOI_Project/PercussionInstrument.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/AOI_Project/PercussionInstrument.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

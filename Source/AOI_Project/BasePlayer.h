@@ -97,4 +97,7 @@ public:
 
 	bool CanMove = true;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void PlayLoseInstrumentSound();
+
 };

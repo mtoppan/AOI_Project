@@ -3,8 +3,6 @@
 
 #include "MusicManager.h"
 
-#include "Evaluation/IMovieSceneEvaluationHook.h"
-
 // Sets default values
 AMusicManager::AMusicManager()
 {
